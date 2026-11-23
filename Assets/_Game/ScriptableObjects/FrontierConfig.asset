@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec4de45dd430a0428de268a857e30b8, type: 3}
+  m_Name: FrontierConfig
+  m_EditorClassIdentifier: Assembly-CSharp::KingOrDeath.GameConfig
+  captureSeconds: 14
+  ecologyInterval: 2
+  scentDelay: 16
+  scentRadius: 65
+  remainsThreshold: 2
+  keepRadius: 24
+  outpostRadius: 15
+  harvestSeconds: 3
+  cleanupSeconds: 4
+  workerCapacity: 8
+  wagonCapacity: 40
+  soldierSpeed: 5
+  workerSpeed: 4
+  wagonSpeed: 3.4
+  wolfSpeed: 6
