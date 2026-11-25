@@ -1,0 +1,11 @@
+{
+    "name": "KingOrDeath.Editor",
+    "rootNamespace": "KingOrDeath.Editor",
+    "references": [
+        "KingOrDeath",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime"
+    ],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": true
+}
