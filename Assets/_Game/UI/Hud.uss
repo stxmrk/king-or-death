@@ -1,0 +1,240 @@
+.root .hud-small {
+    font-size: 13px;
+}
+
+.root .hud-title {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
+    font-size: 30px;
+    color: rgb(191, 158, 92);
+}
+
+.root .hud-heading {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
+    font-size: 21px;
+    color: rgb(191, 158, 92);
+    margin-bottom: 8px;
+}
+
+.root .hud-caption {
+    letter-spacing: 2px;
+    color: rgb(185, 185, 160);
+    margin-bottom: 10px;
+}
+
+.root .hud-line {
+    margin-bottom: 7px;
+}
+
+.hud-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.hud-row--gap {
+    margin-bottom: 6px;
+}
+
+.root .hud-button {
+    height: 28px;
+    min-width: 86px;
+    margin: 0 6px 0 0;
+    padding: 0 10px;
+    border-width: 1px;
+    border-color: rgb(58, 65, 64);
+    border-radius: 0;
+    background-color: rgb(22, 30, 31);
+    color: rgb(222, 222, 191);
+    font-size: 13px;
+    transition-duration: 0.1s;
+}
+
+.root .hud-button:hover {
+    border-color: rgb(191, 158, 92);
+    color: rgb(241, 235, 210);
+    background-color: rgb(32, 40, 38);
+}
+
+.root .hud-button:active {
+    background-color: rgba(191, 158, 92, 0.3);
+}
+
+.root .hud-button--wide {
+    width: 236px;
+    margin-bottom: 6px;
+}
+
+.root .hud-button--half {
+    width: 115px;
+    min-width: 0;
+}
+
+/* Top bar */
+
+.hud-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 82px;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.hud-brand {
+    width: 366px;
+}
+
+.hud-store {
+    flex-grow: 1;
+}
+
+.root .hud-store .unity-label {
+    margin-bottom: 4px;
+}
+
+.hud-top-right {
+    align-items: flex-end;
+}
+
+.root .hud-version {
+    margin-top: 8px;
+    color: rgb(138, 138, 120);
+}
+
+/* Floating panels */
+
+.hud-notice {
+    position: absolute;
+    left: 24px;
+    top: 100px;
+    max-width: 930px;
+    padding: 14px 16px;
+}
+
+.hud-help {
+    position: absolute;
+    left: 24px;
+    top: 165px;
+    width: 430px;
+    padding: 12px 16px 10px 16px;
+}
+
+.hud-objectives {
+    position: absolute;
+    right: 16px;
+    top: 100px;
+    width: 270px;
+    padding: 12px 16px;
+}
+
+.objective {
+    flex-direction: row;
+    align-items: center;
+    height: 25px;
+}
+
+.objective-mark {
+    width: 7px;
+    height: 7px;
+    margin-right: 10px;
+    border-width: 1px;
+    border-color: rgb(138, 138, 120);
+}
+
+.objective--done .objective-mark {
+    background-color: rgb(191, 158, 92);
+    border-color: rgb(191, 158, 92);
+}
+
+.root .objective--done .unity-label {
+    color: rgb(138, 138, 120);
+}
+
+.root .hud-scent {
+    margin-top: 6px;
+}
+
+.hud-banner {
+    position: absolute;
+    left: 50%;
+    top: 640px;
+    width: 520px;
+    margin-left: -260px;
+    padding: 15px 16px;
+}
+
+.hud-paused {
+    position: absolute;
+    left: 50%;
+    top: 390px;
+    width: 300px;
+    height: 80px;
+    margin-left: -150px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bottom bar */
+
+.hud-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 190px;
+    flex-direction: row;
+    padding: 12px 16px;
+}
+
+.hud-minimap {
+    width: 240px;
+    height: 160px;
+    margin: 2px 24px 0 0;
+}
+
+.hud-column--selection {
+    width: 400px;
+    margin-right: 24px;
+}
+
+.hud-column--dev {
+    width: 260px;
+}
+
+.hud-column--caravan {
+    margin-left: auto;
+    width: 400px;
+}
+
+/* World layer */
+
+.post-tag {
+    position: absolute;
+    width: 145px;
+    height: 40px;
+    padding: 4px 8px;
+    background-color: rgba(14, 19, 20, 0.95);
+}
+
+.post-tag-bar {
+    margin-top: auto;
+    height: 4px;
+    background-color: rgb(64, 71, 56);
+}
+
+.post-tag-fill {
+    height: 4px;
+    background-color: rgb(191, 158, 92);
+}
+
+.post-tag--contested .post-tag-fill {
+    background-color: rgb(184, 51, 36);
+}
+
+.hud-drag {
+    position: absolute;
+    border-width: 1px;
+    border-color: rgb(102, 191, 166);
+    background-color: rgba(102, 191, 166, 0.18);
+}

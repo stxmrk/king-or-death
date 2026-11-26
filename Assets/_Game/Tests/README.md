@@ -6,4 +6,4 @@ It executes the same components used in play: pathing across the bridge, flag ca
 
 The runner writes individual PASS/FAIL lines, an initial rendered screenshot, and a nonzero exit code on failure. It has a 180-second wall-clock watchdog. It supplements, rather than replaces, manual UI checks.
 
-`EditMode/` holds the NUnit suite for pure logic (A*, bridge, formation slots, inventory, placement rules) and menu UXML/localization checks. Run it from Test Runner or `unity command test run --mode editor`.
+`EditMode/` holds the NUnit suite for pure logic (A*, bridge, formation slots, inventory, placement rules) and menu/HUD UXML and localization checks. Run it from Test Runner or `unity command test run --mode editor`.

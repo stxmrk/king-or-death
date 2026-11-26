@@ -175,7 +175,7 @@ namespace KingOrDeath.Editor
             return panel;
         }
 
-        static GameObject Document(string name, string uxml)
+        static GameObject Document(string name, string uxml, float order = 0)
         {
             var go = GameObject.Find(name);
             if (!go)
@@ -185,13 +185,17 @@ namespace KingOrDeath.Editor
             if (!doc)
                 doc = go.AddComponent<UIDocument>();
             doc.panelSettings = Panel();
+            doc.sortingOrder = order;
             doc.visualTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(UiRoot + "/" + uxml);
             return go;
         }
 
-        static void AddPauseMenu()
+        static void AddPauseMenu() // and the HUD under it
         {
-            var go = Document("PauseMenu", "PauseMenu.uxml");
+            var hud = Document("Hud", "Hud.uxml");
+            if (!hud.GetComponent<Hud>())
+                hud.AddComponent<Hud>();
+            var go = Document("PauseMenu", "PauseMenu.uxml", 10);
             if (!go.GetComponent<PauseMenu>())
                 go.AddComponent<PauseMenu>();
         }

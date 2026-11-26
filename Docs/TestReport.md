@@ -1,6 +1,6 @@
 # Prototype verification report
 
-Unity 6000.6.10f1 / URP 17.6.0 / Windows x64 Mono. Final player integration run: **27 PASS, 0 FAIL**. EditMode NUnit suite (`Assets/_Game/Tests/EditMode`): **13 PASS** (simulation logic plus menu UXML wiring and EN/RU translation). The `-verify` run now boots through the MainMenu scene, which skips straight to the scenario. See [individual assertions](RuntimeVerification.txt).
+Unity 6000.6.10f1 / URP 17.6.0 / Windows x64 Mono. Final player integration run: **27 PASS, 0 FAIL**. EditMode NUnit suite (`Assets/_Game/Tests/EditMode`): **17 PASS** (simulation logic plus menu and HUD UXML wiring and EN/RU translation). The `-verify` run now boots through the MainMenu scene, which skips straight to the scenario. See [individual assertions](RuntimeVerification.txt).
 
 ## Executed checks
 The actual standalone player ran an accelerated scenario through production gameplay components. Verified: initial units; rectangle selection; A* bridge restriction; flag capture and contested progress; valid/invalid building placement; unchanged construction radius; worker harvesting and local delivery; no resource teleportation; caravan loading, travel and unloading; empty-source waiting and resumption; melee death and persistent remains; scent delay and wolves physically leaving the den; worker burial; insufficient stock; enemy recapture; route suspension on ownership loss; salvage of half the cargo; complete route blockade and recovery.

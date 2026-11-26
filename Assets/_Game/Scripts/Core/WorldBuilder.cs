@@ -54,7 +54,6 @@ namespace KingOrDeath
             world.AddComponent<TerritorySystem>();
             world.AddComponent<BuildingPlacement>();
             world.AddComponent<SelectionController>();
-            world.AddComponent<Hud>();
             world.AddComponent<RuntimeVerification>();
             var land = new GameObject("Landscape");
             ModelFactory.Part(

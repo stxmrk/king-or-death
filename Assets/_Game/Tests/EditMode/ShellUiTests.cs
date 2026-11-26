@@ -22,17 +22,26 @@ namespace KingOrDeath.Tests
 
         [TestCase("MainMenu.uxml", "newGameButton", "continueButton", "loadButton", "settingsButton", "aboutButton", "quitButton", "scenarioBack", "aboutBack", "startButton", "hintsToggle", "versionLabel", "loadingFill", "loadingText", "loadingTip")]
         [TestCase("PauseMenu.uxml", "pauseRoot", "pausePanel", "pauseSubtitle", "resumeButton", "saveButton", "pauseSettingsButton", "restartButton", "mainMenuButton", "pauseQuitButton")]
-        public void UxmlHasEveryNamedElementAndSettings(string uxml, params string[] names)
+        [TestCase("Hud.uxml", "hudRoot", "worldLayer", "minimap", "notice", "noticeText", "helpPanel", "objectiveList", "scentLabel", "placementBanner", "placementText", "pausedBanner", "dragRect", "workerPanel", "swordPanel", "idlePanel", "caravanControls", "storeName", "storeStock", "versionLabel", "selectionTitle", "unitInfo", "workerState", "corpseActionLabel", "caravanState", "caravanRoute", "pauseButton", "menuButton", "helpButton", "buryButton", "burnButton", "hideButton", "carryButton", "dropButton", "escortButton", "buildButton", "recruitButton", "crewButton", "raidButton", "routePineButton", "routeEastButton", "routeToggleButton", "cargoButton", "reverseButton", "selectCaravanButton")]
+        public void UxmlHasEveryNamedElement(string uxml, params string[] names)
         {
             var root = Load(uxml);
             foreach (var n in names)
                 Assert.IsNotNull(root.Q(n), uxml + " lacks " + n);
+        }
+
+        [TestCase("MainMenu.uxml")]
+        [TestCase("PauseMenu.uxml")]
+        public void SettingsViewBinds(string uxml)
+        {
+            var root = Load(uxml);
             Assert.IsNotNull(root.Q("settingsScreen").Q<DropdownField>("languageField"));
             Assert.DoesNotThrow(() => new SettingsView(root.Q("settingsScreen"), () => { }));
         }
 
         [TestCase("MainMenu.uxml")]
         [TestCase("PauseMenu.uxml")]
+        [TestCase("Hud.uxml")]
         public void EveryKeyTranslatesAndSwitchesLanguage(string uxml)
         {
             var root = Load(uxml);

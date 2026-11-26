@@ -22,6 +22,7 @@ namespace KingOrDeath
         void Start()
         {
             root = GetComponent<UIDocument>().rootVisualElement;
+            root.pickingMode = PickingMode.Ignore; // full-screen container must not swallow world clicks
             overlay = root.Q("pauseRoot");
             panel = root.Q("pausePanel");
             settingsScreen = root.Q("settingsScreen");

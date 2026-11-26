@@ -1,0 +1,103 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:kod="KingOrDeath">
+    <ui:Style src="Shell.uss" />
+    <ui:Style src="Hud.uss" />
+    <ui:VisualElement name="hudRoot" class="root screen" picking-mode="Ignore">
+        <kod:HudOverlay name="worldLayer" class="screen" picking-mode="Ignore" />
+        <ui:VisualElement name="topBar" class="panel hud-top">
+            <ui:VisualElement class="hud-brand">
+                <ui:Label text="KING OR DEATH" class="hud-title" />
+                <ui:Label text="hud.tagline" class="hud-small" />
+            </ui:VisualElement>
+            <ui:VisualElement class="hud-store">
+                <ui:Label name="storeName" class="hud-small" />
+                <ui:Label name="storeStock" />
+            </ui:VisualElement>
+            <ui:VisualElement class="hud-top-right">
+                <ui:VisualElement class="hud-row">
+                    <ui:Button name="pauseButton" text="hud.pause" class="hud-button" />
+                    <ui:Button name="menuButton" text="ctl.menu" class="hud-button" />
+                    <ui:Button name="helpButton" text="hud.help" class="hud-button" />
+                </ui:VisualElement>
+                <ui:Label name="versionLabel" class="hud-small hud-version" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="notice" class="panel hud-notice">
+            <ui:Label name="noticeText" class="hud-small" />
+        </ui:VisualElement>
+        <ui:VisualElement name="helpPanel" class="panel hud-help">
+            <ui:Label text="hud.help.title" class="hud-heading" />
+            <ui:Label text="hud.help.1" class="hud-small hud-line" />
+            <ui:Label text="hud.help.2" class="hud-small hud-line" />
+            <ui:Label text="hud.help.3" class="hud-small hud-line" />
+        </ui:VisualElement>
+        <ui:VisualElement name="objectivesPanel" class="panel hud-objectives">
+            <ui:Label text="hud.scenario" class="hud-small hud-caption" />
+            <ui:VisualElement name="objectiveList" />
+            <ui:Label name="scentLabel" class="hud-small hud-scent" />
+        </ui:VisualElement>
+        <ui:VisualElement name="placementBanner" class="panel hud-banner hidden">
+            <ui:Label name="placementText" class="hud-small" />
+        </ui:VisualElement>
+        <ui:VisualElement name="pausedBanner" class="panel hud-paused hidden">
+            <ui:Label text="hud.paused" class="hud-heading" />
+        </ui:VisualElement>
+        <ui:VisualElement name="bottomBar" class="panel hud-bottom">
+            <kod:HudMinimap name="minimap" class="hud-minimap" />
+            <ui:VisualElement class="hud-column hud-column--selection">
+                <ui:Label name="selectionTitle" class="hud-heading" />
+                <ui:Label name="unitInfo" class="hud-small hud-line" />
+                <ui:VisualElement name="workerPanel">
+                    <ui:Label name="workerState" class="hud-small hud-line" />
+                    <ui:VisualElement class="hud-row hud-row--gap">
+                        <ui:Button name="buryButton" text="hud.bury" class="hud-button" />
+                        <ui:Button name="burnButton" text="hud.burn" class="hud-button" />
+                        <ui:Button name="hideButton" text="hud.hide" class="hud-button" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="hud-row hud-row--gap">
+                        <ui:Button name="carryButton" text="hud.carry" class="hud-button" />
+                        <ui:Button name="dropButton" text="hud.drop" class="hud-button" />
+                        <ui:Label name="corpseActionLabel" class="hud-small" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="swordPanel">
+                    <ui:Label text="hud.sword.hint" class="hud-small hud-line" />
+                    <ui:Button name="escortButton" text="hud.escort" class="hud-button hud-button--wide" />
+                </ui:VisualElement>
+                <ui:VisualElement name="idlePanel">
+                    <ui:Label text="hud.idle.1" class="hud-small hud-line" />
+                    <ui:Label text="hud.idle.2" class="hud-small hud-line" />
+                    <ui:Label text="hud.idle.3" class="hud-small hud-line" />
+                    <ui:Label text="hud.idle.4" class="hud-small hud-line" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="hud-column hud-column--dev">
+                <ui:Label text="hud.dev" class="hud-small hud-caption" />
+                <ui:Button name="buildButton" text="hud.build" class="hud-button hud-button--wide" />
+                <ui:Button name="recruitButton" text="hud.recruit" class="hud-button hud-button--wide" />
+                <ui:VisualElement class="hud-row hud-row--gap">
+                    <ui:Button name="crewButton" text="hud.crew" class="hud-button hud-button--half" />
+                    <ui:Button name="raidButton" text="hud.raid" class="hud-button hud-button--half" />
+                </ui:VisualElement>
+                <ui:Label text="hud.dev.note" class="hud-small hud-line" />
+            </ui:VisualElement>
+            <ui:VisualElement class="hud-column hud-column--caravan">
+                <ui:Label text="hud.caravan" class="hud-small hud-caption" />
+                <ui:Label name="caravanState" class="hud-small hud-line" />
+                <ui:Label name="caravanRoute" class="hud-small hud-line" />
+                <ui:VisualElement name="caravanControls">
+                    <ui:VisualElement class="hud-row hud-row--gap">
+                        <ui:Button name="routePineButton" text="hud.route.pine" class="hud-button" />
+                        <ui:Button name="routeEastButton" text="hud.route.east" class="hud-button" />
+                        <ui:Button name="routeToggleButton" class="hud-button" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="hud-row hud-row--gap">
+                        <ui:Button name="cargoButton" class="hud-button" />
+                        <ui:Button name="reverseButton" text="hud.reverse" class="hud-button" />
+                        <ui:Button name="selectCaravanButton" text="hud.select.caravan" class="hud-button" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="dragRect" class="hud-drag hidden" picking-mode="Ignore" />
+    </ui:VisualElement>
+</ui:UXML>
