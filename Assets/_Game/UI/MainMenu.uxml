@@ -1,0 +1,89 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="Shell.uss" />
+    <ui:Template name="Settings" src="Settings.uxml" />
+    <ui:VisualElement name="menuRoot" class="root">
+        <ui:VisualElement class="art" />
+        <ui:VisualElement name="mainScreen" class="screen">
+            <ui:VisualElement class="fade-left" />
+            <ui:VisualElement class="main-column">
+                <ui:Label text="King&#10;or Death" class="title" />
+                <ui:Label text="A WORLD REMEMBERS EVERY BATTLE" class="tagline" />
+                <ui:VisualElement class="menu-list">
+                    <ui:Button name="newGameButton" text="menu.new" class="menu-button" />
+                    <ui:Button name="continueButton" text="menu.continue" class="menu-button" />
+                    <ui:Button name="loadButton" text="menu.load" class="menu-button" />
+                    <ui:Button name="settingsButton" text="menu.settings" class="menu-button" />
+                    <ui:Button name="aboutButton" text="menu.about" class="menu-button" />
+                    <ui:Button name="quitButton" text="menu.quit" class="menu-button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label name="versionLabel" class="corner corner--left" />
+            <ui:Label text="menu.hint" class="corner corner--right" />
+        </ui:VisualElement>
+        <ui:VisualElement name="scenarioScreen" class="screen dim hidden">
+            <ui:VisualElement class="page">
+                <ui:VisualElement class="page-header">
+                    <ui:Label text="scn.title" class="page-title" />
+                    <ui:Button name="scenarioBack" text="common.back" class="link-button" />
+                </ui:VisualElement>
+                <ui:VisualElement class="scenario-body">
+                    <ui:VisualElement class="scenario-list">
+                        <ui:Label text="scn.list" class="caption" />
+                        <ui:VisualElement class="scenario-item scenario-item--active">
+                            <ui:Label text="The First Frontier" class="item-title" />
+                            <ui:Label text="scn.frontier.meta" class="item-meta" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="scenario-item scenario-item--locked">
+                            <ui:Label text="scn.siege" class="item-title" />
+                            <ui:Label text="scn.siege.meta" class="item-meta" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="scenario-item scenario-item--locked">
+                            <ui:Label text="scn.skirmish" class="item-title" />
+                            <ui:Label text="scn.skirmish.meta" class="item-meta" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="panel scenario-card">
+                        <ui:VisualElement class="card-art" />
+                        <ui:VisualElement class="card-body">
+                            <ui:VisualElement class="card-text">
+                                <ui:Label text="The First Frontier" class="card-title" />
+                                <ui:Label text="scn.frontier.desc" class="body-text" />
+                                <ui:Label text="scn.tags" class="item-meta" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="card-side">
+                                <ui:Toggle name="hintsToggle" label="scn.hints" />
+                                <ui:Button name="startButton" text="scn.start" class="gold-button" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Instance template="Settings" name="settingsScreen" class="screen dim hidden" />
+        <ui:VisualElement name="aboutScreen" class="screen dim hidden">
+            <ui:VisualElement class="page">
+                <ui:VisualElement class="page-header">
+                    <ui:Label text="about.title" class="page-title" />
+                    <ui:Button name="aboutBack" text="common.back" class="link-button" />
+                </ui:VisualElement>
+                <ui:VisualElement class="panel about-panel">
+                    <ui:Label text="about.text" class="body-text" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="loadingScreen" class="screen hidden">
+            <ui:VisualElement class="art art--loading" />
+            <ui:VisualElement class="fade-bottom" />
+            <ui:VisualElement class="loading-content">
+                <ui:VisualElement class="loading-row">
+                    <ui:Label text="The First Frontier" class="loading-title" />
+                    <ui:Label name="loadingText" class="item-meta" />
+                </ui:VisualElement>
+                <ui:VisualElement class="loading-bar">
+                    <ui:VisualElement name="loadingFill" class="loading-fill" />
+                </ui:VisualElement>
+                <ui:Label name="loadingTip" class="body-text loading-tip" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

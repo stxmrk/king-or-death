@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="Shell.uss" />
+    <ui:Template name="Settings" src="Settings.uxml" />
+    <ui:VisualElement name="pauseRoot" class="root overlay hidden">
+        <ui:VisualElement name="pausePanel" class="panel pause-panel">
+            <ui:Label text="pause.title" class="pause-title" />
+            <ui:Label name="pauseSubtitle" class="item-meta pause-subtitle" />
+            <ui:Button name="resumeButton" text="pause.resume" class="menu-button menu-button--center" />
+            <ui:Button name="saveButton" text="pause.save" class="menu-button menu-button--center" />
+            <ui:Button name="pauseSettingsButton" text="menu.settings" class="menu-button menu-button--center" />
+            <ui:Button name="restartButton" text="pause.restart" class="menu-button menu-button--center" />
+            <ui:Button name="mainMenuButton" text="pause.mainmenu" class="menu-button menu-button--center" />
+            <ui:Button name="pauseQuitButton" text="pause.quit" class="menu-button menu-button--center" />
+            <ui:Label text="pause.warn" class="pause-note" />
+        </ui:VisualElement>
+        <ui:Instance template="Settings" name="settingsScreen" class="screen dim hidden" />
+    </ui:VisualElement>
+</ui:UXML>

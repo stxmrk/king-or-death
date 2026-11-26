@@ -1,0 +1,513 @@
+.root {
+    flex-grow: 1;
+    color: rgb(222, 222, 191);
+    font-size: 18px;
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Regular.ttf");
+}
+
+.root .unity-text-element {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Regular.ttf");
+}
+
+.root .unity-label {
+    color: rgb(222, 222, 191);
+    padding: 0;
+    margin: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.art {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("project://database/Assets/_Game/Art/UI/menu_bg.png");
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.art--loading {
+    background-image: url("project://database/Assets/_Game/Art/UI/loading_bg.png");
+}
+
+.fade-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("project://database/Assets/_Game/Art/UI/fade_left.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.fade-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 380px;
+    background-image: url("project://database/Assets/_Game/Art/UI/fade_bottom.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.dim {
+    background-color: rgba(14, 19, 20, 0.9);
+}
+
+.panel {
+    background-color: rgba(14, 19, 20, 0.95);
+    border-top-width: 2px;
+    border-top-color: rgb(191, 158, 92);
+}
+
+/* Main screen */
+
+.main-column {
+    position: absolute;
+    left: 120px;
+    top: 120px;
+    width: 600px;
+}
+
+.root .title {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
+    font-size: 104px;
+    color: rgb(191, 158, 92);
+    letter-spacing: 2px;
+}
+
+.root .tagline {
+    font-size: 15px;
+    letter-spacing: 4px;
+    color: rgb(185, 185, 160);
+    margin: 10px 0 52px 0;
+}
+
+.menu-list {
+    width: 380px;
+}
+
+.root .menu-button {
+    height: 52px;
+    margin: 0 0 6px 0;
+    padding: 0 20px;
+    border-width: 0;
+    border-left-width: 3px;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(222, 222, 191);
+    font-size: 24px;
+    -unity-text-align: middle-left;
+    transition-duration: 0.12s;
+}
+
+.root .menu-button:hover,
+.root .menu-button:focus {
+    background-color: rgba(191, 158, 92, 0.16);
+    border-left-color: rgb(191, 158, 92);
+    color: rgb(241, 235, 210);
+}
+
+.root .menu-button:disabled {
+    color: rgb(138, 138, 120);
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+}
+
+.root .menu-button--center {
+    -unity-text-align: middle-center;
+    border-left-width: 0;
+    font-size: 20px;
+    height: 50px;
+}
+
+.root .corner {
+    position: absolute;
+    bottom: 44px;
+    font-size: 14px;
+    color: rgb(138, 138, 120);
+}
+
+.corner--left {
+    left: 120px;
+}
+
+.corner--right {
+    right: 48px;
+}
+
+/* Sub-pages */
+
+.page {
+    flex-grow: 1;
+    padding: 64px 120px;
+}
+
+.page-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.root .page-title {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
+    font-size: 60px;
+    color: rgb(191, 158, 92);
+}
+
+.root .link-button {
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    color: rgb(222, 222, 191);
+    font-size: 18px;
+    transition-duration: 0.12s;
+}
+
+.root .link-button:hover,
+.root .link-button:focus {
+    color: rgb(232, 199, 126);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.root .caption {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: rgb(185, 185, 160);
+    margin-bottom: 10px;
+}
+
+.root .gold-button {
+    height: 56px;
+    margin: 0;
+    border-width: 0;
+    border-radius: 0;
+    background-color: rgb(191, 158, 92);
+    color: rgb(14, 19, 20);
+    font-size: 21px;
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
+    transition-duration: 0.12s;
+}
+
+.root .gold-button:hover,
+.root .gold-button:focus {
+    background-color: rgb(214, 182, 118);
+}
+
+.root .gold-button--small {
+    height: 48px;
+    padding: 0 40px;
+    font-size: 18px;
+}
+
+.root .ghost-button {
+    height: 48px;
+    padding: 0 28px;
+    margin: 0 12px 0 0;
+    border-width: 1px;
+    border-color: rgb(58, 65, 64);
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(222, 222, 191);
+    font-size: 18px;
+}
+
+.root .ghost-button:hover,
+.root .ghost-button:focus {
+    border-color: rgb(191, 158, 92);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* Scenario */
+
+.scenario-body {
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.scenario-list {
+    width: 340px;
+    margin-right: 32px;
+}
+
+.scenario-item {
+    padding: 16px 18px;
+    margin-bottom: 8px;
+    border-left-width: 3px;
+    border-color: rgba(0, 0, 0, 0);
+}
+
+.scenario-item--active {
+    background-color: rgba(191, 158, 92, 0.14);
+    border-left-color: rgb(191, 158, 92);
+}
+
+.root .item-title {
+    font-size: 21px;
+    color: rgb(241, 235, 210);
+}
+
+.root .item-meta {
+    font-size: 15px;
+    color: rgb(185, 185, 160);
+    margin-top: 4px;
+}
+
+.root .scenario-item--locked .item-title,
+.root .scenario-item--locked .item-meta {
+    color: rgb(138, 138, 120);
+}
+
+.scenario-card {
+    flex-grow: 1;
+}
+
+.card-art {
+    height: 360px;
+    background-image: url("project://database/Assets/_Game/Art/UI/scenario_frontier.png");
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.card-body {
+    flex-direction: row;
+    flex-grow: 1;
+    padding: 28px 32px;
+}
+
+.card-text {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: 40px;
+}
+
+.root .card-title {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
+    font-size: 40px;
+    color: rgb(241, 235, 210);
+    margin-bottom: 12px;
+}
+
+.root .body-text {
+    white-space: normal;
+    font-size: 19px;
+    margin-bottom: 14px;
+}
+
+.card-side {
+    width: 300px;
+    justify-content: flex-end;
+}
+
+.card-side .unity-toggle {
+    margin: 0 0 16px 0;
+}
+
+.root .card-side .unity-base-field__label {
+    min-width: 0;
+    flex-grow: 1;
+}
+
+/* Loading */
+
+.loading-content {
+    position: absolute;
+    left: 120px;
+    right: 120px;
+    bottom: 64px;
+}
+
+.loading-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 18px;
+}
+
+.root .loading-title {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
+    font-size: 48px;
+    color: rgb(241, 235, 210);
+}
+
+.loading-bar {
+    height: 4px;
+    background-color: rgb(42, 49, 50);
+    margin-bottom: 20px;
+}
+
+.loading-fill {
+    height: 4px;
+    width: 0;
+    background-color: rgb(191, 158, 92);
+}
+
+.root .loading-tip {
+    max-width: 920px;
+}
+
+/* About */
+
+.about-panel {
+    padding: 32px;
+    max-width: 960px;
+}
+
+/* Pause */
+
+.overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(8, 11, 12, 0.78);
+    align-items: center;
+    justify-content: center;
+}
+
+.pause-panel {
+    width: 420px;
+    padding: 36px 40px;
+}
+
+.root .pause-title {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
+    font-size: 48px;
+    color: rgb(191, 158, 92);
+    -unity-text-align: middle-center;
+}
+
+.root .pause-subtitle {
+    -unity-text-align: middle-center;
+    margin: 4px 0 22px 0;
+}
+
+.root .pause-note {
+    font-size: 14px;
+    color: rgb(138, 138, 120);
+    -unity-text-align: middle-center;
+    white-space: normal;
+    margin-top: 18px;
+}
+
+/* Settings */
+
+.tabs {
+    flex-direction: row;
+    border-bottom-width: 1px;
+    border-color: rgb(42, 49, 50);
+    margin-bottom: 24px;
+}
+
+.root .tab {
+    height: 48px;
+    padding: 0 24px;
+    margin: 0 4px 0 0;
+    border-width: 0;
+    border-bottom-width: 2px;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(185, 185, 160);
+    font-size: 18px;
+}
+
+.root .tab:hover {
+    color: rgb(241, 235, 210);
+    background-color: rgba(191, 158, 92, 0.08);
+}
+
+.root .tab:focus {
+    color: rgb(241, 235, 210);
+}
+
+.root .tab--active {
+    background-color: rgba(191, 158, 92, 0.14);
+    border-bottom-color: rgb(191, 158, 92);
+    color: rgb(241, 235, 210);
+}
+
+.settings-page {
+    padding: 28px 32px;
+    max-width: 960px;
+}
+
+.root .setting {
+    margin: 0 0 18px 0;
+}
+
+.root .unity-base-field__label {
+    min-width: 300px;
+    color: rgb(222, 222, 191);
+    font-size: 18px;
+    -unity-text-align: middle-left;
+}
+
+.root .unity-base-popup-field__input {
+    height: 40px;
+    padding: 0 10px;
+    border-color: rgb(58, 65, 64);
+    border-radius: 0;
+    background-color: rgb(22, 30, 31);
+}
+
+.root .unity-base-popup-field__text {
+    color: rgb(241, 235, 210);
+    font-size: 17px;
+}
+
+.root .unity-base-popup-field__arrow {
+    -unity-background-image-tint-color: rgb(191, 158, 92);
+}
+
+.root .unity-toggle__checkmark {
+    width: 22px;
+    height: 22px;
+    border-color: rgb(58, 65, 64);
+    background-color: rgb(22, 30, 31);
+    -unity-background-image-tint-color: rgb(191, 158, 92);
+}
+
+.root .unity-base-slider__tracker {
+    background-color: rgb(42, 49, 50);
+    border-color: rgb(58, 65, 64);
+}
+
+.root .unity-base-slider__dragger {
+    background-color: rgb(191, 158, 92);
+    border-color: rgb(191, 158, 92);
+}
+
+.control-row {
+    flex-direction: row;
+    padding: 9px 0;
+    border-bottom-width: 1px;
+    border-color: rgb(34, 42, 43);
+}
+
+.root .control-action {
+    width: 340px;
+}
+
+.root .control-keys {
+    color: rgb(241, 235, 210);
+}
+
+.page-footer {
+    max-width: 960px;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 24px;
+}

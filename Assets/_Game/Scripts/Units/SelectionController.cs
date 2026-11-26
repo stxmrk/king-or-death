@@ -137,6 +137,8 @@ namespace KingOrDeath
         void Update()
         {
             selected.RemoveAll(u => !u);
+            if (PauseMenu.IsOpen)
+                return;
             if (Input.GetKeyDown(KeyCode.Space))
                 GameSession.I.Pause();
             if (Time.timeScale == 0)

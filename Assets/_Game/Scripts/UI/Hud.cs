@@ -9,7 +9,7 @@ namespace KingOrDeath
             title,
             button;
         Texture2D pixel;
-        bool help = true;
+        bool help = GameSettings.Hints;
         float scale;
         static Color ink = new Color(.055f, .075f, .077f, .96f),
             gold = new Color(.75f, .62f, .36f),
@@ -72,7 +72,7 @@ namespace KingOrDeath
         void OnGUI()
         {
             Init();
-            if (!GameSession.I || !SelectionController.I)
+            if (!GameSession.I || !SelectionController.I || PauseMenu.IsOpen)
                 return;
             scale = Screen.height / 900f;
             float width = Screen.width / scale;
@@ -93,11 +93,11 @@ namespace KingOrDeath
             );
             if (Button(width - 305, 16, 85, Time.timeScale == 0 ? "Resume" : "Pause"))
                 session.Pause();
-            if (Button(width - 210, 16, 90, "Restart"))
-                session.Restart();
+            if (Button(width - 210, 16, 90, "Menu") && PauseMenu.I)
+                PauseMenu.I.Open();
             if (Button(width - 110, 16, 85, "Help"))
                 help = !help;
-            Label(width - 300, 49, 290, "THE FIRST FRONTIER   ·   v0.1.0", small);
+            Label(width - 300, 49, 290, "THE FIRST FRONTIER   ·   v" + Application.version, small);
             if (Time.unscaledTime < session.noticeUntil)
             {
                 Panel(new Rect(24, 100, Mathf.Min(930, width - 360), 48));

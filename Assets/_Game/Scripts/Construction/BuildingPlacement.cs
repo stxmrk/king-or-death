@@ -41,9 +41,10 @@ namespace KingOrDeath
 
         void Update()
         {
-            if (!active)
+            if (!active || PauseMenu.IsOpen)
                 return;
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+            // Esc is routed through PauseMenu so one press never both cancels and opens the menu.
+            if (Input.GetMouseButtonDown(1))
             {
                 Cancel();
                 return;

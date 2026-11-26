@@ -11,6 +11,8 @@ namespace KingOrDeath
 
         void LateUpdate()
         {
+            if (PauseMenu.IsOpen)
+                return;
             float x = Input.GetAxisRaw("Horizontal"),
                 z = Input.GetAxisRaw("Vertical");
             if (Input.GetKey(KeyCode.Q))

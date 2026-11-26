@@ -1,10 +1,12 @@
 using System;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UIElements;
 
 namespace KingOrDeath.Editor
 {
@@ -127,7 +129,7 @@ namespace KingOrDeath.Editor
             UnityEngine.Object.DestroyImmediate(house);
             PlayerSettings.companyName = "KingOrDeath";
             PlayerSettings.productName = "KING OR DEATH";
-            PlayerSettings.bundleVersion = "0.1.0";
+            PlayerSettings.bundleVersion = "0.2.0";
             PlayerSettings.defaultScreenWidth = 1600;
             PlayerSettings.defaultScreenHeight = 900;
             PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
@@ -136,21 +138,92 @@ namespace KingOrDeath.Editor
                 UnityEditor.Build.NamedBuildTarget.Standalone,
                 ScriptingImplementation.Mono2x
             );
+            AddPauseMenu();
             EditorSceneManager.SaveScene(
                 UnityEngine.SceneManagement.SceneManager.GetActiveScene(),
                 root + "/Scenes/Prototype_01.unity"
             );
-            EditorBuildSettings.scenes = new[]
-            {
-                new EditorBuildSettingsScene(root + "/Scenes/Prototype_01.unity", true),
-            };
+            EditorBuildSettings.scenes = Scenes
+                .Select(s => new EditorBuildSettingsScene(s, true))
+                .ToArray();
             AssetDatabase.SaveAssets();
             Debug.Log("KING OR DEATH SCENE READY");
+        }
+
+        const string UiRoot = "Assets/_Game/UI";
+        static readonly string[] Scenes =
+        {
+            "Assets/_Game/Scenes/MainMenu.unity",
+            "Assets/_Game/Scenes/Prototype_01.unity",
+        };
+
+        static PanelSettings Panel()
+        {
+            string path = UiRoot + "/PanelSettings.asset";
+            var panel = AssetDatabase.LoadAssetAtPath<PanelSettings>(path);
+            if (!panel)
+            {
+                panel = ScriptableObject.CreateInstance<PanelSettings>();
+                AssetDatabase.CreateAsset(panel, path);
+            }
+            panel.themeStyleSheet = AssetDatabase.LoadAssetAtPath<ThemeStyleSheet>(UiRoot + "/Theme.tss");
+            panel.scaleMode = PanelScaleMode.ScaleWithScreenSize;
+            panel.referenceResolution = new Vector2Int(1600, 900);
+            panel.screenMatchMode = PanelScreenMatchMode.MatchWidthOrHeight;
+            panel.match = 1; // scale by height, like the IMGUI HUD
+            EditorUtility.SetDirty(panel);
+            return panel;
+        }
+
+        static GameObject Document(string name, string uxml)
+        {
+            var go = GameObject.Find(name);
+            if (!go)
+                go = new GameObject(name);
+            // Unity's fake-null breaks ??, so test explicitly.
+            var doc = go.GetComponent<UIDocument>();
+            if (!doc)
+                doc = go.AddComponent<UIDocument>();
+            doc.panelSettings = Panel();
+            doc.visualTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(UiRoot + "/" + uxml);
+            return go;
+        }
+
+        static void AddPauseMenu()
+        {
+            var go = Document("PauseMenu", "PauseMenu.uxml");
+            if (!go.GetComponent<PauseMenu>())
+                go.AddComponent<PauseMenu>();
+        }
+
+        [MenuItem("KING OR DEATH/Rebuild menu scene and pause menu")]
+        public static void BuildShell()
+        {
+            EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+            var cam = new GameObject("Main Camera", typeof(UnityEngine.Camera), typeof(AudioListener));
+            cam.tag = "MainCamera";
+            var c = cam.GetComponent<UnityEngine.Camera>();
+            c.clearFlags = CameraClearFlags.SolidColor;
+            c.backgroundColor = new Color(.055f, .075f, .078f);
+            Document("MainMenu", "MainMenu.uxml").AddComponent<MainMenu>();
+            EditorSceneManager.SaveScene(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene(),
+                Scenes[0]
+            );
+            EditorSceneManager.OpenScene(Scenes[1]);
+            AddPauseMenu();
+            EditorSceneManager.SaveScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+            EditorBuildSettings.scenes = Scenes
+                .Select(s => new EditorBuildSettingsScene(s, true))
+                .ToArray();
+            AssetDatabase.SaveAssets();
+            Debug.Log("KING OR DEATH MENU SCENE READY");
         }
 
         public static void BuildDeliverables()
         {
             BuildScene();
+            BuildShell();
             Screenshot();
             BuildWindows();
         }
@@ -184,7 +257,7 @@ namespace KingOrDeath.Editor
             var report = BuildPipeline.BuildPlayer(
                 new BuildPlayerOptions
                 {
-                    scenes = new[] { "Assets/_Game/Scenes/Prototype_01.unity" },
+                    scenes = Scenes,
                     locationPathName = "Builds/Windows/KingOrDeath.exe",
                     target = BuildTarget.StandaloneWindows64,
                     options = BuildOptions.None,
