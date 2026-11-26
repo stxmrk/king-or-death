@@ -329,7 +329,7 @@
 .hud-help {
     position: absolute;
     left: 16px;
-    bottom: 214px;
+    bottom: 282px;
     width: 400px;
 }
 
@@ -916,4 +916,91 @@
     background-color: rgba(8, 11, 12, 0.96);
     border-width: 1px;
     border-color: rgb(120, 100, 62);
+}
+
+/* Quick select and control groups (above the minimap) */
+
+.hud-quick {
+    position: absolute;
+    left: 16px;
+    bottom: 214px;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.root .quick-button {
+    width: 52px;
+    height: 52px;
+    margin: 0 6px 0 0;
+    padding: 0;
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    border-radius: 0;
+    background-color: rgba(10, 14, 15, 0.9);
+    transition-duration: 0.1s;
+}
+
+.root .quick-button:hover {
+    border-color: rgb(241, 235, 210);
+    scale: 1.05 1.05;
+}
+
+.quick-icon {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.root .quick-count {
+    position: absolute;
+    right: 3px;
+    bottom: 1px;
+    font-size: 15px;
+    color: rgb(241, 235, 210);
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 1);
+}
+
+/* idle workers waiting for orders: gold frame and a slow pulse (Hud toggles quick-button--pulse) */
+.root .quick-button--alert {
+    border-color: rgb(191, 158, 92);
+    border-width: 2px;
+}
+
+.root .quick-button--pulse {
+    border-color: rgb(255, 220, 140);
+    background-color: rgba(191, 158, 92, 0.35);
+}
+
+.root .quick-button--off {
+    opacity: 0.45;
+}
+
+.hud-groups {
+    flex-direction: row;
+    margin-left: 10px;
+}
+
+.root .group-tile {
+    width: 44px;
+    height: 44px;
+    margin: 0 4px 0 0;
+    padding: 0;
+    border-width: 1px;
+    border-color: rgb(120, 100, 62);
+    border-radius: 0;
+    background-color: rgba(10, 14, 15, 0.9);
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.root .group-tile:hover {
+    border-color: rgb(241, 235, 210);
+}
+
+.root .group-tile--on {
+    border-width: 2px;
+    border-color: rgb(191, 158, 92);
 }

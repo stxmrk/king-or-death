@@ -1004,3 +1004,87 @@
     background-color: rgb(20, 28, 29);
     -unity-background-scale-mode: scale-and-crop;
 }
+
+/* Mission briefing (PauseMenu.uxml, BriefingView) */
+
+.briefing {
+    background-color: rgb(6, 9, 10);
+}
+
+.briefing-art {
+    background-image: url("project://database/Assets/_Game/Art/UI/scenario_frontier.png");
+}
+
+.briefing-shade {
+    opacity: 0.92;
+}
+
+.briefing-body {
+    position: absolute;
+    left: 120px;
+    top: 110px;
+    width: 760px;
+}
+
+.root .briefing-chapter {
+    color: rgb(191, 158, 92);
+    letter-spacing: 4px;
+    margin-bottom: 4px;
+}
+
+.root .briefing-title {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
+    font-size: 78px;
+    color: rgb(241, 235, 210);
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+.briefing-divider {
+    width: 330px;
+    height: 42px;
+    margin: 0 0 18px -6px;
+}
+
+.root .briefing-text {
+    font-size: 23px;
+    color: rgb(232, 226, 200);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.briefing-card {
+    position: absolute;
+    right: 100px;
+    bottom: 96px;
+    width: 440px;
+    padding: 26px 30px 24px 30px;
+}
+
+.briefing-goal {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.root .briefing-goal .unity-label {
+    font-size: 19px;
+    white-space: normal;
+    flex-shrink: 1;
+}
+
+.root .briefing-start {
+    margin-top: 14px;
+}
+
+.root .briefing-skip {
+    -unity-text-align: middle-center;
+    margin-top: 10px;
+}
+
+.briefing-goal .objective-mark {
+    width: 9px;
+    height: 9px;
+    margin-right: 14px;
+    border-width: 1px;
+    border-color: rgb(191, 158, 92);
+    rotate: 45deg;
+}

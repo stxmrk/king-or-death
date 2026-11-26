@@ -36,6 +36,9 @@
             <ui:VisualElement class="control-row"><ui:Label text="ctl.build" class="control-action" /><ui:Label text="B" class="control-keys" /></ui:VisualElement>
             <ui:VisualElement class="control-row"><ui:Label text="ctl.cards" class="control-action" /><ui:Label text="ctl.cards.k" class="control-keys" /></ui:VisualElement>
             <ui:VisualElement class="control-row"><ui:Label text="ctl.quick" class="control-action" /><ui:Label text="F5 / F9" class="control-keys" /></ui:VisualElement>
+            <ui:VisualElement class="control-row"><ui:Label text="ctl.groups" class="control-action" /><ui:Label text="ctl.groups.k" class="control-keys" /></ui:VisualElement>
+            <ui:VisualElement class="control-row"><ui:Label text="ctl.idle" class="control-action" /><ui:Label text=". / ," class="control-keys" /></ui:VisualElement>
+            <ui:VisualElement class="control-row"><ui:Label text="ctl.minimap" class="control-action" /><ui:Label text="ctl.minimap.k" class="control-keys" /></ui:VisualElement>
             <ui:VisualElement class="control-row"><ui:Label text="ctl.pause" class="control-action" /><ui:Label text="ctl.pause.k" class="control-keys" /></ui:VisualElement>
             <ui:VisualElement class="control-row"><ui:Label text="ctl.menu" class="control-action" /><ui:Label text="Esc" class="control-keys" /></ui:VisualElement>
         </ui:VisualElement>

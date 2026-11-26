@@ -61,6 +61,10 @@ namespace KingOrDeath
         public float playTime;
         public float speed = 1;
         public Outcome outcome;
+
+        // A fresh match (not a load, not a restart) opens with the briefing; set before any Start runs.
+        public bool FreshStart { get; private set; }
+        static bool restarting;
         float nextCheck,
             nextAutosave;
 
@@ -68,6 +72,8 @@ namespace KingOrDeath
         {
             I = this;
             Time.timeScale = 1;
+            FreshStart = SaveSystem.Pending == null && !restarting;
+            restarting = false;
         }
 
         void Start()
@@ -165,6 +171,7 @@ namespace KingOrDeath
 
         public void Restart()
         {
+            restarting = true;
             Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

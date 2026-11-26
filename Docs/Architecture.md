@@ -38,8 +38,8 @@ All screens are UI Toolkit documents in `Assets/_Game/UI` styled by `Shell.uss` 
 | Document | Controller | Contents |
 |---|---|---|
 | `MainMenu.uxml` | `MainMenu` | main menu with continue card, scenario select, load screen, codex, settings, about, loading screen, embers, fader |
-| `PauseMenu.uxml` | `PauseMenu` | pause panel, save and load screens, results (victory/defeat) screen, fader; also F5/F9 |
-| `Hud.uxml` | `Hud` | top bar, event log, objectives and threats, announcements, tooltips, selection panel, command card, caravan panel, minimap, world overlay |
+| `PauseMenu.uxml` | `PauseMenu`, `BriefingView` | mission briefing (fresh matches only), pause panel, save and load screens, results (victory/defeat) screen, fader; also F5/F9 |
+| `Hud.uxml` | `Hud` | top bar, event log, objectives and threats, announcements, tooltips, quick-select bar and control-group tiles, selection panel, command card, caravan panel, minimap (left: camera, right: move order), world overlay |
 | `Settings.uxml`, `SaveSlots.uxml`, `Confirm.uxml` | `SettingsView`, `SaveSlotsView`, `ConfirmDialog` | templates reused by the main and pause menus |
 
 - **Localization.** `Loc` holds an EN/RU table. UXML text holds keys, which `Loc.Apply` translates (and re-translates on a language switch); code uses `Loc.T`, `Loc.F`, `Loc.Name` (place and unit names stay English ids in data and saves). Element `tooltip` attributes are keys too.

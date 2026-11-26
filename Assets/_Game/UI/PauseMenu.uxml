@@ -1,4 +1,4 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements">
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:kod="KingOrDeath">
     <ui:Style src="Shell.uss" />
     <ui:Template name="Settings" src="Settings.uxml" />
     <ui:Template name="SaveSlots" src="SaveSlots.uxml" />
@@ -37,6 +37,26 @@
         <ui:Instance template="Settings" name="settingsScreen" class="screen dim hidden" />
         <ui:Instance template="SaveSlots" name="slotsScreen" class="screen dim hidden" />
         <ui:Instance template="Confirm" name="confirmScreen" class="screen hidden" />
+    </ui:VisualElement>
+    <ui:VisualElement name="briefing" class="root screen briefing hidden">
+        <ui:VisualElement class="art briefing-art" />
+        <kod:EmberField class="screen" picking-mode="Ignore" />
+        <ui:VisualElement class="fade-left briefing-shade" picking-mode="Ignore" />
+        <ui:VisualElement class="fade-bottom" picking-mode="Ignore" />
+        <ui:VisualElement class="briefing-body">
+            <ui:Label text="brief.chapter" class="caption briefing-chapter" />
+            <ui:Label text="scn.frontier" class="briefing-title" />
+            <ui:VisualElement class="divider briefing-divider" />
+            <ui:Label name="briefingText" class="body-text briefing-text" />
+        </ui:VisualElement>
+        <ui:VisualElement class="panel briefing-card ornate">
+            <ui:Label text="brief.goals" class="caption" />
+            <ui:VisualElement class="briefing-goal"><ui:VisualElement class="objective-mark" /><ui:Label text="brief.goal.1" /></ui:VisualElement>
+            <ui:VisualElement class="briefing-goal"><ui:VisualElement class="objective-mark" /><ui:Label text="brief.goal.2" /></ui:VisualElement>
+            <ui:VisualElement class="briefing-goal"><ui:VisualElement class="objective-mark" /><ui:Label text="brief.goal.3" /></ui:VisualElement>
+            <ui:Button name="briefingStart" text="brief.start" class="gold-button briefing-start" />
+            <ui:Label text="brief.skip" class="item-meta briefing-skip" />
+        </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="fader" class="fader fader--on" picking-mode="Ignore" />
 </ui:UXML>

@@ -105,6 +105,24 @@
             <ui:Label name="tooltipText" class="hud-small hud-wrap" />
         </ui:VisualElement>
 
+        <ui:VisualElement name="quickBar" class="hud-quick">
+            <ui:Button name="quickIdle" class="quick-button" tooltip="tip.idle">
+                <ui:VisualElement class="quick-icon icon-unit_worker" picking-mode="Ignore" />
+                <ui:Label name="quickIdleCount" class="quick-count" picking-mode="Ignore" />
+                <ui:Label text="." class="cmd-key" picking-mode="Ignore" />
+            </ui:Button>
+            <ui:Button name="quickArmy" class="quick-button" tooltip="tip.armyq">
+                <ui:VisualElement class="quick-icon icon-unit_swordsman" picking-mode="Ignore" />
+                <ui:Label name="quickArmyCount" class="quick-count" picking-mode="Ignore" />
+                <ui:Label text="1" class="cmd-key" picking-mode="Ignore" />
+            </ui:Button>
+            <ui:Button name="quickCaravan" class="quick-button" tooltip="tip.caravanq">
+                <ui:VisualElement class="quick-icon icon-unit_wagon" picking-mode="Ignore" />
+                <ui:Label text="," class="cmd-key" picking-mode="Ignore" />
+            </ui:Button>
+            <ui:VisualElement name="groupBar" class="hud-groups" />
+        </ui:VisualElement>
+
         <ui:VisualElement name="bottomBar" class="hud-bottom">
             <ui:VisualElement class="divider hud-crest hud-crest--bottom" picking-mode="Ignore" />
             <ui:VisualElement class="hud-map-frame">

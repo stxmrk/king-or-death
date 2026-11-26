@@ -18,6 +18,8 @@ namespace KingOrDeath
         SettingsView settings;
         SaveSlotsView slots;
         ConfirmDialog confirm;
+        BriefingView briefing;
+        int briefingEndFrame = -1;
         BuildingPlacement placement;
         float resumeScale = 1;
         bool resultsDismissed;
@@ -84,7 +86,22 @@ namespace KingOrDeath
             Loc.Changed += Relocalize;
             GameSession.Ended += ShowResults;
             overlay.AddToClassList("hidden");
+            briefing = new BriefingView(root.Q("briefing"), EndBriefing);
+            if (!RuntimeVerification.Active && GameSession.I.FreshStart)
+                StartBriefing();
         }
+
+        // The match waits, paused and with the HUD hidden, until the player takes command.
+        void StartBriefing()
+        {
+            IsOpen = true;
+            resumeScale = 1;
+            Time.timeScale = 0;
+            briefing.Show();
+        }
+
+        // Released a frame later, so the key that closed the briefing does not also reach the game (Space = pause).
+        void EndBriefing() => briefingEndFrame = Time.frameCount;
 
         void OnDestroy()
         {
@@ -109,6 +126,23 @@ namespace KingOrDeath
 
         void Update()
         {
+            if (briefingEndFrame >= 0 && Time.frameCount > briefingEndFrame)
+            {
+                briefingEndFrame = -1;
+                IsOpen = false;
+                Time.timeScale = resumeScale;
+                return;
+            }
+            if (briefing.Active)
+            {
+                briefing.Update();
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Escape))
+                {
+                    UiAudio.Play("ui_confirm");
+                    briefing.Finish();
+                }
+                return;
+            }
             if (!IsOpen && !placement.active)
             {
                 if (Input.GetKeyDown(KeyCode.F5))

@@ -11,6 +11,12 @@ namespace KingOrDeath
         public CorpseAction corpseAction = CorpseAction.Bury;
         public Rect dragRect;
         public bool dragging;
+
+        // Control groups 2..9 (1 stays "whole army"). Version bumps on every change so the HUD rebuilds its tiles.
+        public readonly List<Unit>[] groups = new List<Unit>[10];
+        public int groupsVersion;
+        int lastGroup = -1;
+        float lastGroupAt;
         Vector2 begin;
         BuildingPlacement placement;
 
@@ -56,6 +62,79 @@ namespace KingOrDeath
             foreach (var u in Unit.All)
                 if (u.faction == Faction.Player && u.kind == UnitKind.Swordsman)
                     Select(u);
+        }
+
+        public static Vector3 Centroid(List<Unit> units)
+        {
+            Vector3 sum = Vector3.zero;
+            int n = 0;
+            foreach (var u in units)
+                if (u)
+                {
+                    sum += u.transform.position;
+                    n++;
+                }
+            return n > 0 ? sum / n : Vector3.zero;
+        }
+
+        public static void FocusCamera(Vector3 at)
+        {
+            var cam = UnityEngine.Camera.main;
+            if (cam)
+                cam.GetComponent<RtsCamera>().focus = new Vector3(at.x, 0, at.z);
+        }
+
+        public void Assign(int group)
+        {
+            selected.RemoveAll(u => !u);
+            groups[group] = selected.Count > 0 ? new List<Unit>(selected) : null;
+            groupsVersion++;
+            if (selected.Count > 0)
+                GameSession.I.Notify(Loc.F("n.group", group, selected.Count));
+        }
+
+        // Selects a group; a second press within 0.4 s brings the camera to it.
+        public void Recall(int group)
+        {
+            var g = groups[group];
+            if (g == null)
+                return;
+            int before = g.Count;
+            g.RemoveAll(u => !u);
+            if (g.Count != before)
+                groupsVersion++;
+            if (g.Count == 0)
+            {
+                groups[group] = null;
+                groupsVersion++;
+                return;
+            }
+            Clear();
+            foreach (var u in g)
+                Select(u);
+            if (lastGroup == group && Time.unscaledTime - lastGroupAt < .4f)
+                FocusCamera(Centroid(g));
+            lastGroup = group;
+            lastGroupAt = Time.unscaledTime;
+        }
+
+        // Plain move for the whole selection in formation (minimap right-click).
+        public void MoveSelected(Vector3 goal)
+        {
+            selected.RemoveAll(u => !u);
+            if (selected.Count == 0)
+                return;
+            int index = 0;
+            foreach (var unit in selected)
+            {
+                var escort = unit.GetComponent<EscortOrder>();
+                if (escort)
+                    escort.wagon = null;
+                unit.Move(goal + FormationOffset(index++, selected.Count));
+            }
+            UiAudio.Play("ui_tab", .6f);
+            Hud.Order(goal, false);
+            GameSession.I.Mark("orders");
         }
 
         public void BeginSelection(Vector2 point)
@@ -145,6 +224,15 @@ namespace KingOrDeath
                 return;
             if (Input.GetKeyDown(KeyCode.Alpha1))
                 SelectArmy();
+            bool ctrl = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+            for (int g = 2; g <= 9; g++)
+                if (Input.GetKeyDown(KeyCode.Alpha0 + g))
+                {
+                    if (ctrl)
+                        Assign(g);
+                    else
+                        Recall(g);
+                }
             if (placement.active)
                 return;
             if (Input.GetMouseButtonDown(1) && !Hud.OverUI() && GroundPoint(out var goal))

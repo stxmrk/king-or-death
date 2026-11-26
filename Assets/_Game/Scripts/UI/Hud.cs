@@ -71,6 +71,13 @@ namespace KingOrDeath
 
         // Unit under the pointer, ringed by HudOverlay.
         public static Unit HoverUnit;
+
+        Button quickIdle, quickArmy, quickCaravan;
+        Label quickIdleCount, quickArmyCount;
+        VisualElement groupBar;
+        readonly List<(int group, Button tile, Label count)> groupTiles = new List<(int, Button, Label)>();
+        int shownGroups = -1,
+            idleIndex = -1;
         VisualElement nextObjective;
         Label nextHint;
 
@@ -264,6 +271,19 @@ namespace KingOrDeath
                 storeTabs.Add((store, tab));
             }
 
+            quickIdle = root.Q<Button>("quickIdle");
+            quickArmy = root.Q<Button>("quickArmy");
+            quickCaravan = root.Q<Button>("quickCaravan");
+            quickIdleCount = L("quickIdleCount");
+            quickArmyCount = L("quickArmyCount");
+            groupBar = root.Q("groupBar");
+            quickIdle.clicked += NextIdleWorker;
+            quickArmy.clicked += () =>
+            {
+                SelectionController.I.SelectArmy();
+                SelectionController.FocusCamera(SelectionController.Centroid(SelectionController.I.selected));
+            };
+            quickCaravan.clicked += SelectCaravan;
             BuildCommands();
             Wire();
             uiTip = root.Q("uiTip");
@@ -392,6 +412,97 @@ namespace KingOrDeath
             var size = root.layout.size;
             uiTip.style.left = Mathf.Min(p.x + 16, size.x - w - 8);
             uiTip.style.top = p.y + 24 + h > size.y ? p.y - h - 10 : p.y + 24;
+        }
+
+        static List<Unit> IdleWorkers()
+        {
+            var idle = new List<Unit>();
+            foreach (var u in Unit.All)
+                if (u && u.faction == Faction.Player && u.kind == UnitKind.Worker)
+                {
+                    var w = u.GetComponent<WorkerAgent>();
+                    if (w && !w.node && !w.corpse)
+                        idle.Add(u);
+                }
+            return idle;
+        }
+
+        // Each press selects the next idle worker and brings the camera to it.
+        void NextIdleWorker()
+        {
+            var idle = IdleWorkers();
+            if (idle.Count == 0)
+            {
+                UiAudio.Play("ui_error");
+                return;
+            }
+            idleIndex = (idleIndex + 1) % idle.Count;
+            var u = idle[idleIndex];
+            SelectionController.I.Clear();
+            SelectionController.I.Select(u);
+            SelectionController.FocusCamera(u.transform.position);
+        }
+
+        void SelectCaravan()
+        {
+            var route = Caravan();
+            if (!route)
+            {
+                UiAudio.Play("ui_error");
+                return;
+            }
+            SelectionController.I.Clear();
+            SelectionController.I.Select(route.GetComponent<Unit>());
+            SelectionController.FocusCamera(route.transform.position);
+        }
+
+        void RefreshQuick()
+        {
+            int idle = IdleWorkers().Count,
+                army = 0;
+            foreach (var u in Unit.All)
+                army += u && u.faction == Faction.Player && u.kind == UnitKind.Swordsman ? 1 : 0;
+            quickIdleCount.text = idle > 0 ? idle.ToString() : "";
+            quickIdle.EnableInClassList("quick-button--alert", idle > 0);
+            quickIdle.EnableInClassList("quick-button--pulse", idle > 0 && Time.unscaledTime % 1.2f < .6f);
+            quickIdle.EnableInClassList("quick-button--off", idle == 0);
+            quickArmyCount.text = army.ToString();
+            quickArmy.EnableInClassList("quick-button--off", army == 0);
+            quickCaravan.EnableInClassList("quick-button--off", !Caravan());
+
+            var select = SelectionController.I;
+            if (select.groupsVersion != shownGroups)
+            {
+                shownGroups = select.groupsVersion;
+                groupBar.Clear();
+                groupTiles.Clear();
+                for (int g = 2; g <= 9; g++)
+                {
+                    var members = select.groups[g];
+                    var first = members?.Find(u => u);
+                    if (!first)
+                        continue;
+                    int group = g;
+                    var tile = new Button(() => select.Recall(group)) { tooltip = "tip.group" };
+                    tile.AddToClassList("group-tile");
+                    tile.AddToClassList("icon-" + PortraitOf(first));
+                    var key = new Label(g.ToString()) { pickingMode = PickingMode.Ignore };
+                    key.AddToClassList("cmd-key");
+                    var count = new Label { pickingMode = PickingMode.Ignore };
+                    count.AddToClassList("quick-count");
+                    tile.Add(key);
+                    tile.Add(count);
+                    groupBar.Add(tile);
+                    groupTiles.Add((g, tile, count));
+                }
+            }
+            foreach (var (g, tile, count) in groupTiles)
+            {
+                var members = select.groups[g];
+                int alive = members == null ? 0 : members.FindAll(u => u).Count;
+                count.text = alive.ToString();
+                tile.EnableInClassList("group-tile--on", alive > 0 && members.TrueForAll(u => !u || u.selected));
+            }
         }
 
         void SetCursor(string name)
@@ -696,6 +807,11 @@ namespace KingOrDeath
             RefreshHover();
             RefreshTip();
             RefreshFloaters();
+            RefreshQuick();
+            if (Input.GetKeyDown(KeyCode.Period))
+                NextIdleWorker();
+            if (Input.GetKeyDown(KeyCode.Comma))
+                SelectCaravan();
             RefreshSelection(select);
             RefreshCommands();
             RefreshCaravan();
@@ -1221,16 +1337,18 @@ namespace KingOrDeath
         public HudMinimap()
         {
             generateVisualContent += Draw;
+            // left click moves the camera there, right click sends the selected units there
             RegisterCallback<PointerDownEvent>(e =>
             {
                 var r = contentRect;
-                var cam = UnityEngine.Camera.main;
-                if (cam)
-                    cam.GetComponent<RtsCamera>().focus = new Vector3(
-                        e.localPosition.x / r.width * 128 - 64,
-                        0,
-                        48 - e.localPosition.y / r.height * 96
-                    );
+                var world = new Vector3(e.localPosition.x / r.width * 128 - 64, 0, 48 - e.localPosition.y / r.height * 96);
+                if (e.button == 1)
+                {
+                    if (SelectionController.I && !PauseMenu.IsOpen && Time.timeScale > 0)
+                        SelectionController.I.MoveSelected(world);
+                }
+                else
+                    SelectionController.FocusCamera(world);
                 e.StopPropagation();
             });
         }
