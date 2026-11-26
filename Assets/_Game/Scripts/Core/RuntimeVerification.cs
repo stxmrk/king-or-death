@@ -9,6 +9,8 @@ namespace KingOrDeath
     // Opt-in integration runner executes the production components in the actual player.
     public class RuntimeVerification : MonoBehaviour
     {
+        // True in a -verify player run: outcome checks and autosaves stay off so the scripted scenario is not interrupted.
+        public static readonly bool Active = Array.IndexOf(Environment.GetCommandLineArgs(), "-verify") >= 0;
         List<string> results = new List<string>();
         string output;
         bool failed;
@@ -170,9 +172,9 @@ namespace KingOrDeath
             int reservedWood = post.store.wood;
             post.store.wood = 0;
             route.SetRoute(post.store, g.keep);
-            yield return Until(() => route.state == "Waiting for Wood", 60);
+            yield return Until(() => route.state == "ts.Waiting" && route.resource == ResourceKind.Wood, 60);
             Check(
-                route.state == "Waiting for Wood" && route.cargo == 0,
+                route.state == "ts.Waiting" && route.resource == ResourceKind.Wood && route.cargo == 0,
                 "Empty source makes caravan wait without creating cargo"
             );
             post.store.wood = reservedWood + 8;
@@ -370,6 +372,24 @@ namespace KingOrDeath
             Check(
                 NavGrid.I.Path(new Vector3(35, 0, -20), center) != null,
                 "Route recovers after removing blockade"
+            );
+
+            // Snapshot survives JSON, and applying it restores stocks, ownership, units and remains in place.
+            var snapshot = JsonUtility.FromJson<SaveData>(JsonUtility.ToJson(SaveSystem.Capture()));
+            int units = snapshot.units.Count,
+                remains = snapshot.corpses.Count,
+                keepWood = g.keep.wood;
+            g.keep.wood += 500;
+            post.store.owner = Faction.Enemy;
+            WorldBuilder.SpawnUnit(UnitKind.Wolf, Faction.Wildlife, new Vector3(0, 0, 30), "Stray wolf");
+            SaveSystem.Apply(snapshot);
+            yield return null;
+            Check(
+                g.keep.wood == keepWood
+                    && post.store.owner == Faction.Player
+                    && Unit.All.Count == units
+                    && CorpseSystem.I.remains.Count == remains,
+                "Save snapshot restores stocks, ownership, units and remains"
             );
         }
     }

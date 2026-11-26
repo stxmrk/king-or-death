@@ -24,6 +24,7 @@ namespace KingOrDeath
     public class Corpse : MonoBehaviour
     {
         public UnitKind kind;
+        public Faction faction;
         public float diedAt;
         public RemainsState state;
         public bool claimed;
@@ -32,7 +33,7 @@ namespace KingOrDeath
             : state == RemainsState.Hidden ? .25f
             : 0;
 
-        public void Apply(CorpseAction action)
+        public void Apply(CorpseAction action, bool notify = true)
         {
             claimed = false;
             if (action == CorpseAction.Carry)
@@ -69,9 +70,12 @@ namespace KingOrDeath
             if (state == RemainsState.Hidden)
                 foreach (var r in GetComponentsInChildren<Renderer>())
                     r.sharedMaterial = ModelFactory.Material(new Color(.2f, .28f, .14f));
-            GameSession.I.Notify(
-                "Remains: " + state + ". Scent influence " + Influence.ToString("0.00") + "."
-            );
+            if (notify)
+                GameSession.I.Notify(
+                    Loc.F("n.remains", Loc.T("remains." + state), Influence.ToString("0.00")),
+                    false,
+                    transform.position
+                );
         }
     }
 }

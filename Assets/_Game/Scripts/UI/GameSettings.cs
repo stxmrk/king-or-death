@@ -11,8 +11,16 @@ namespace KingOrDeath
         public static int Quality;
         public static bool VSync;
         public static int FpsLimit; // -1 = unlimited
-        public static float MasterVolume;
+        public static float MasterVolume,
+            MusicVolume,
+            SfxVolume,
+            VoiceVolume;
+        public static bool EdgeScroll,
+            DamageNumbers,
+            AlwaysHealth;
+        public static float CameraSpeed;
         public static bool Hints;
+        public static float UiScale; // 1 = 1600 x 900 reference layout
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Load()
@@ -32,7 +40,15 @@ namespace KingOrDeath
             VSync = PlayerPrefs.GetInt("kod.vsync", 1) == 1;
             FpsLimit = PlayerPrefs.GetInt("kod.fps", -1);
             MasterVolume = PlayerPrefs.GetFloat("kod.volume", 1);
+            MusicVolume = PlayerPrefs.GetFloat("kod.music", .7f);
+            SfxVolume = PlayerPrefs.GetFloat("kod.sfx", .9f);
+            VoiceVolume = PlayerPrefs.GetFloat("kod.voice", 1);
+            EdgeScroll = PlayerPrefs.GetInt("kod.edge", 1) == 1;
+            DamageNumbers = PlayerPrefs.GetInt("kod.dmg", 1) == 1;
+            AlwaysHealth = PlayerPrefs.GetInt("kod.hpbars", 0) == 1;
+            CameraSpeed = PlayerPrefs.GetFloat("kod.camspeed", 1);
             Hints = PlayerPrefs.GetInt("kod.hints", 1) == 1;
+            UiScale = PlayerPrefs.GetFloat("kod.uiscale", 1);
             Apply();
         }
 
@@ -46,13 +62,21 @@ namespace KingOrDeath
             PlayerPrefs.SetInt("kod.vsync", VSync ? 1 : 0);
             PlayerPrefs.SetInt("kod.fps", FpsLimit);
             PlayerPrefs.SetFloat("kod.volume", MasterVolume);
+            PlayerPrefs.SetFloat("kod.music", MusicVolume);
+            PlayerPrefs.SetFloat("kod.sfx", SfxVolume);
+            PlayerPrefs.SetFloat("kod.voice", VoiceVolume);
+            PlayerPrefs.SetInt("kod.edge", EdgeScroll ? 1 : 0);
+            PlayerPrefs.SetInt("kod.dmg", DamageNumbers ? 1 : 0);
+            PlayerPrefs.SetInt("kod.hpbars", AlwaysHealth ? 1 : 0);
+            PlayerPrefs.SetFloat("kod.camspeed", CameraSpeed);
             PlayerPrefs.SetInt("kod.hints", Hints ? 1 : 0);
+            PlayerPrefs.SetFloat("kod.uiscale", UiScale);
             PlayerPrefs.Save();
         }
 
         public static void Reset()
         {
-            foreach (var k in new[] { "lang", "window", "width", "height", "quality", "vsync", "fps", "volume", "hints" })
+            foreach (var k in new[] { "lang", "window", "width", "height", "quality", "vsync", "fps", "volume", "music", "sfx", "voice", "edge", "dmg", "hpbars", "camspeed", "hints", "uiscale" })
                 PlayerPrefs.DeleteKey("kod." + k);
             Load();
         }
@@ -64,6 +88,7 @@ namespace KingOrDeath
             QualitySettings.vSyncCount = VSync ? 1 : 0;
             Application.targetFrameRate = FpsLimit;
             AudioListener.volume = MasterVolume;
+            UiFx.Fit();
             if (Application.isEditor)
                 return;
             if (Width > 0 && Height > 0)

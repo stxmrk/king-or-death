@@ -23,10 +23,10 @@ namespace KingOrDeath
         public static bool Valid(Vector3 p, out ResourceStore store, out string reason)
         {
             store = At(p, 4);
-            reason = "Outside controlled territory";
+            reason = Loc.T("pl.outside");
             if (!store)
                 return false;
-            reason = "River, road or blocked ground";
+            reason = Loc.T("pl.blocked");
             if (Mathf.Abs(p.z + 5) < 5 || Mathf.Abs(p.x) > 59 || Mathf.Abs(p.z) > 43)
                 return false;
             for (float x = -3; x <= 3; x += 2)
@@ -42,10 +42,10 @@ namespace KingOrDeath
             foreach (var n in FindObjectsByType<ResourceNode>())
                 if (Vector3.Distance(p, n.transform.position) < 4)
                     return false;
-            reason = "Need 50 wood and 20 stone in " + store.title;
+            reason = Loc.F("pl.cost", Loc.Name(store.title));
             if (store.wood < 50 || store.stone < 20)
                 return false;
-            reason = "Build from " + store.title;
+            reason = Loc.F("pl.from", Loc.Name(store.title));
             return true;
         }
     }

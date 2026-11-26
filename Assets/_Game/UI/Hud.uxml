@@ -3,100 +3,178 @@
     <ui:Style src="Hud.uss" />
     <ui:VisualElement name="hudRoot" class="root screen" picking-mode="Ignore">
         <kod:HudOverlay name="worldLayer" class="screen" picking-mode="Ignore" />
-        <ui:VisualElement name="topBar" class="panel hud-top">
-            <ui:VisualElement class="hud-brand">
-                <ui:Label text="KING OR DEATH" class="hud-title" />
-                <ui:Label text="hud.tagline" class="hud-small" />
+
+        <ui:VisualElement name="topBar" class="hud-top">
+            <ui:VisualElement class="divider hud-crest hud-crest--top" picking-mode="Ignore" />
+            <ui:VisualElement class="hud-emblem emblem" />
+            <ui:Label text="King or Death" class="hud-title" />
+            <ui:VisualElement name="storeTabs" class="hud-tabs" />
+            <ui:VisualElement class="hud-resources">
+                <ui:VisualElement class="hud-res" tooltip="tip.stock"><ui:VisualElement class="hud-res-icon icon-res_wood" /><ui:Label name="woodValue" class="hud-res-value" /></ui:VisualElement>
+                <ui:VisualElement class="hud-res" tooltip="tip.stock"><ui:VisualElement class="hud-res-icon icon-res_stone" /><ui:Label name="stoneValue" class="hud-res-value" /></ui:VisualElement>
+                <ui:VisualElement class="hud-res" tooltip="tip.stock"><ui:VisualElement class="hud-res-icon icon-res_food" /><ui:Label name="foodValue" class="hud-res-value" /></ui:VisualElement>
+                <ui:VisualElement class="hud-sep hud-forces" />
+                <ui:VisualElement class="hud-res hud-forces" tooltip="tip.army"><ui:VisualElement class="hud-res-icon icon-unit_swordsman" /><ui:Label name="armyValue" class="hud-res-value" /></ui:VisualElement>
+                <ui:VisualElement class="hud-res hud-forces" tooltip="tip.workers"><ui:VisualElement class="hud-res-icon icon-unit_worker" /><ui:Label name="workerValue" class="hud-res-value" /></ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement class="hud-store">
-                <ui:Label name="storeName" class="hud-small" />
-                <ui:Label name="storeStock" />
+            <ui:VisualElement class="hud-time">
+                <ui:Label name="clockLabel" class="hud-clock" tooltip="tip.clock" />
+                <ui:Button name="pauseButton" text="II" class="speed-button" tooltip="tip.pause" />
+                <ui:Button name="speed1" text="1×" class="speed-button" tooltip="tip.speed" />
+                <ui:Button name="speed2" text="2×" class="speed-button" tooltip="tip.speed" />
+                <ui:Button name="speed3" text="3×" class="speed-button" tooltip="tip.speed" />
             </ui:VisualElement>
             <ui:VisualElement class="hud-top-right">
-                <ui:VisualElement class="hud-row">
-                    <ui:Button name="pauseButton" text="hud.pause" class="hud-button" />
-                    <ui:Button name="menuButton" text="ctl.menu" class="hud-button" />
-                    <ui:Button name="helpButton" text="hud.help" class="hud-button" />
-                </ui:VisualElement>
-                <ui:Label name="versionLabel" class="hud-small hud-version" />
+                <ui:Button name="objectivesButton" text="hud.objectives" class="hud-button" tooltip="tip.objectives" />
+                <ui:Button name="helpButton" text="hud.help" class="hud-button" tooltip="tip.help" />
+                <ui:Button name="menuButton" text="ctl.menu" class="hud-button hud-button--gold" tooltip="tip.menu" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="notice" class="panel hud-notice">
-            <ui:Label name="noticeText" class="hud-small" />
-        </ui:VisualElement>
-        <ui:VisualElement name="helpPanel" class="panel hud-help">
-            <ui:Label text="hud.help.title" class="hud-heading" />
+
+        <ui:VisualElement name="eventLog" class="hud-log" picking-mode="Ignore" />
+
+        <ui:VisualElement name="helpPanel" class="hud-card hud-help">
+            <ui:Label text="hud.help.title" class="hud-caption" />
             <ui:Label text="hud.help.1" class="hud-small hud-line" />
             <ui:Label text="hud.help.2" class="hud-small hud-line" />
             <ui:Label text="hud.help.3" class="hud-small hud-line" />
         </ui:VisualElement>
-        <ui:VisualElement name="objectivesPanel" class="panel hud-objectives">
-            <ui:Label text="hud.scenario" class="hud-small hud-caption" />
-            <ui:VisualElement name="objectiveList" />
-            <ui:Label name="scentLabel" class="hud-small hud-scent" />
+
+        <ui:VisualElement name="sidePanel" class="hud-side" picking-mode="Ignore">
+            <ui:VisualElement name="objectivesPanel" class="hud-card">
+                <ui:VisualElement class="hud-row hud-row--between">
+                    <ui:Label text="hud.scenario" class="hud-caption" />
+                    <ui:Label name="objectiveCount" class="hud-caption hud-caption--gold" />
+                </ui:VisualElement>
+                <ui:VisualElement class="hud-meter"><ui:VisualElement name="objectiveFill" class="hud-meter-fill" /></ui:VisualElement>
+                <ui:VisualElement name="objectiveList" />
+                <ui:VisualElement name="nextObjective" class="next-objective">
+                    <ui:Label text="hud.next" class="hud-caption hud-caption--gold" />
+                    <ui:Label name="nextHint" class="hud-small hud-wrap" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="hud-card">
+                <ui:Label text="hud.threats" class="hud-caption" />
+                <ui:VisualElement class="threat" tooltip="tip.wolves">
+                    <ui:VisualElement class="threat-icon icon-unit_wolf" />
+                    <ui:VisualElement class="threat-body">
+                        <ui:Label name="packLabel" class="hud-small" />
+                        <ui:VisualElement class="hud-meter hud-meter--threat">
+                            <ui:VisualElement name="scentFill" class="hud-meter-fill" />
+                            <ui:VisualElement name="scentMark" class="hud-meter-mark" />
+                        </ui:VisualElement>
+                        <ui:Label name="scentLabel" class="hud-tiny" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="threat" tooltip="tip.host">
+                    <ui:VisualElement class="threat-icon icon-unit_ashen" />
+                    <ui:VisualElement class="threat-body">
+                        <ui:Label name="hostLabel" class="hud-small" />
+                        <ui:Label name="hostDetail" class="hud-tiny" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="placementBanner" class="panel hud-banner hidden">
+
+        <ui:VisualElement name="announce" class="hud-announce hidden" picking-mode="Ignore">
+            <ui:VisualElement name="announceIcon" class="announce-icon" picking-mode="Ignore" />
+            <ui:Label name="announceTitle" class="announce-title" picking-mode="Ignore" />
+            <ui:VisualElement class="divider announce-divider" picking-mode="Ignore" />
+            <ui:Label name="announceText" class="announce-text" picking-mode="Ignore" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="hoverTip" class="hud-hover hidden" picking-mode="Ignore">
+            <ui:Label name="hoverTitle" class="hud-small hover-title" picking-mode="Ignore" />
+            <ui:Label name="hoverMeta" class="hud-tiny" picking-mode="Ignore" />
+            <ui:VisualElement name="hoverBar" class="hover-bar" picking-mode="Ignore"><ui:VisualElement name="hoverFill" class="hover-fill" picking-mode="Ignore" /></ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="placementBanner" class="hud-card hud-banner hidden">
             <ui:Label name="placementText" class="hud-small" />
         </ui:VisualElement>
-        <ui:VisualElement name="pausedBanner" class="panel hud-paused hidden">
-            <ui:Label text="hud.paused" class="hud-heading" />
+        <ui:VisualElement name="pausedBanner" class="hud-paused hidden" picking-mode="Ignore">
+            <ui:Label text="hud.paused" class="hud-paused-text" />
         </ui:VisualElement>
-        <ui:VisualElement name="bottomBar" class="panel hud-bottom">
-            <kod:HudMinimap name="minimap" class="hud-minimap" />
-            <ui:VisualElement class="hud-column hud-column--selection">
-                <ui:Label name="selectionTitle" class="hud-heading" />
-                <ui:Label name="unitInfo" class="hud-small hud-line" />
-                <ui:VisualElement name="workerPanel">
-                    <ui:Label name="workerState" class="hud-small hud-line" />
-                    <ui:VisualElement class="hud-row hud-row--gap">
-                        <ui:Button name="buryButton" text="hud.bury" class="hud-button" />
-                        <ui:Button name="burnButton" text="hud.burn" class="hud-button" />
-                        <ui:Button name="hideButton" text="hud.hide" class="hud-button" />
-                    </ui:VisualElement>
-                    <ui:VisualElement class="hud-row hud-row--gap">
-                        <ui:Button name="carryButton" text="hud.carry" class="hud-button" />
-                        <ui:Button name="dropButton" text="hud.drop" class="hud-button" />
-                        <ui:Label name="corpseActionLabel" class="hud-small" />
+
+        <ui:VisualElement name="tooltip" class="hud-tooltip ornate hidden" picking-mode="Ignore">
+            <ui:VisualElement class="hud-row hud-row--between">
+                <ui:Label name="tooltipTitle" class="hud-heading" />
+                <ui:Label name="tooltipKey" class="hud-key" />
+            </ui:VisualElement>
+            <ui:VisualElement name="tooltipCost" class="hud-row" />
+            <ui:Label name="tooltipText" class="hud-small hud-wrap" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="bottomBar" class="hud-bottom">
+            <ui:VisualElement class="divider hud-crest hud-crest--bottom" picking-mode="Ignore" />
+            <ui:VisualElement class="hud-map-frame">
+                <kod:HudMinimap name="minimap" class="hud-minimap" tooltip="tip.minimap" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="selectionPanel" class="hud-selection">
+                <ui:VisualElement name="singlePanel" class="hud-single">
+                    <ui:VisualElement name="portrait" class="hud-portrait" />
+                    <ui:VisualElement class="hud-single-body">
+                        <ui:Label name="selectionTitle" class="hud-heading" />
+                        <ui:Label name="selectionMeta" class="hud-tiny hud-caption--muted" />
+                        <ui:VisualElement name="healthBar" class="hud-health">
+                            <ui:VisualElement name="healthFill" class="hud-health-fill" />
+                            <ui:Label name="healthText" class="hud-health-text" />
+                        </ui:VisualElement>
+                        <ui:Label name="selectionState" class="hud-small hud-line hud-wrap" />
+                        <ui:Label name="selectionDetail" class="hud-small hud-caption--muted hud-wrap" />
+                        <ui:VisualElement name="storeStock" class="hud-row">
+                            <ui:VisualElement class="hud-res"><ui:VisualElement class="hud-res-icon icon-res_wood" /><ui:Label name="storeWood" class="hud-res-value" /></ui:VisualElement>
+                            <ui:VisualElement class="hud-res"><ui:VisualElement class="hud-res-icon icon-res_stone" /><ui:Label name="storeStone" class="hud-res-value" /></ui:VisualElement>
+                            <ui:VisualElement class="hud-res"><ui:VisualElement class="hud-res-icon icon-res_food" /><ui:Label name="storeFood" class="hud-res-value" /></ui:VisualElement>
+                        </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="swordPanel">
-                    <ui:Label text="hud.sword.hint" class="hud-small hud-line" />
-                    <ui:Button name="escortButton" text="hud.escort" class="hud-button hud-button--wide" />
+                <ui:VisualElement name="multiPanel" class="hud-multi">
+                    <ui:Label name="multiTitle" class="hud-caption" />
+                    <ui:VisualElement name="unitGrid" class="hud-grid" />
                 </ui:VisualElement>
-                <ui:VisualElement name="idlePanel">
+                <ui:VisualElement name="idlePanel" class="hud-idle">
+                    <ui:Label text="hud.command" class="hud-heading" />
                     <ui:Label text="hud.idle.1" class="hud-small hud-line" />
                     <ui:Label text="hud.idle.2" class="hud-small hud-line" />
                     <ui:Label text="hud.idle.3" class="hud-small hud-line" />
                     <ui:Label text="hud.idle.4" class="hud-small hud-line" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement class="hud-column hud-column--dev">
-                <ui:Label text="hud.dev" class="hud-small hud-caption" />
-                <ui:Button name="buildButton" text="hud.build" class="hud-button hud-button--wide" />
-                <ui:Button name="recruitButton" text="hud.recruit" class="hud-button hud-button--wide" />
-                <ui:VisualElement class="hud-row hud-row--gap">
-                    <ui:Button name="crewButton" text="hud.crew" class="hud-button hud-button--half" />
-                    <ui:Button name="raidButton" text="hud.raid" class="hud-button hud-button--half" />
-                </ui:VisualElement>
-                <ui:Label text="hud.dev.note" class="hud-small hud-line" />
+
+            <ui:VisualElement class="hud-card-column">
+                <ui:Label name="cardTitle" class="hud-caption" />
+                <ui:VisualElement name="commandCard" class="hud-commands" />
             </ui:VisualElement>
-            <ui:VisualElement class="hud-column hud-column--caravan">
-                <ui:Label text="hud.caravan" class="hud-small hud-caption" />
-                <ui:Label name="caravanState" class="hud-small hud-line" />
-                <ui:Label name="caravanRoute" class="hud-small hud-line" />
+
+            <ui:VisualElement class="hud-caravan">
+                <ui:VisualElement class="hud-row">
+                    <ui:VisualElement class="hud-caravan-icon icon-unit_wagon" />
+                    <ui:VisualElement class="hud-grow">
+                        <ui:Label text="hud.caravan" class="hud-caption" />
+                        <ui:Label name="caravanState" class="hud-small" />
+                        <ui:Label name="caravanRoute" class="hud-tiny hud-caption--muted" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
                 <ui:VisualElement name="caravanControls">
+                    <ui:VisualElement class="hud-meter hud-meter--cargo"><ui:VisualElement name="cargoFill" class="hud-meter-fill" /></ui:VisualElement>
                     <ui:VisualElement class="hud-row hud-row--gap">
-                        <ui:Button name="routePineButton" text="hud.route.pine" class="hud-button" />
-                        <ui:Button name="routeEastButton" text="hud.route.east" class="hud-button" />
-                        <ui:Button name="routeToggleButton" class="hud-button" />
+                        <ui:Button name="routePineButton" text="hud.route.pine" class="hud-button hud-button--grow" tooltip="tip.route" />
+                        <ui:Button name="routeEastButton" text="hud.route.east" class="hud-button hud-button--grow" tooltip="tip.route" />
                     </ui:VisualElement>
                     <ui:VisualElement class="hud-row hud-row--gap">
-                        <ui:Button name="cargoButton" class="hud-button" />
-                        <ui:Button name="reverseButton" text="hud.reverse" class="hud-button" />
-                        <ui:Button name="selectCaravanButton" text="hud.select.caravan" class="hud-button" />
+                        <ui:Button name="routeToggleButton" class="hud-button hud-button--grow" tooltip="tip.toggle" />
+                        <ui:Button name="cargoButton" class="hud-button hud-button--grow" tooltip="tip.cargo" />
+                        <ui:Button name="reverseButton" text="hud.reverse" class="hud-button" tooltip="tip.reverse" />
+                        <ui:Button name="selectCaravanButton" text="hud.select.caravan" class="hud-button" tooltip="tip.selectcaravan" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="uiTip" class="hud-uitip hidden" picking-mode="Ignore">
+            <ui:Label name="uiTipText" class="hud-small hud-wrap" picking-mode="Ignore" />
         </ui:VisualElement>
         <ui:VisualElement name="dragRect" class="hud-drag hidden" picking-mode="Ignore" />
     </ui:VisualElement>

@@ -18,10 +18,15 @@ namespace KingOrDeath
         static readonly string[] modeKeys = { "win.windowed", "win.borderless", "win.fullscreen" };
         static readonly int[] fpsValues = { 30, 60, 144, -1 };
         static readonly string[] languages = { "en", "ru" };
+        static readonly float[] uiScales = { .85f, 1, 1.15f, 1.3f };
 
-        readonly DropdownField window, resolution, quality, fps, language;
-        readonly Toggle vsync, hints;
-        readonly Slider volume;
+        readonly DropdownField window, resolution, quality, fps, language, uiScale;
+        readonly Toggle vsync, hints, edge, damage, health;
+        readonly Slider volume,
+            musicVolume,
+            sfxVolume,
+            voiceVolume,
+            cameraSpeed;
         readonly List<Vector2Int> sizes;
         readonly Button[] tabs;
         readonly VisualElement[] pages;
@@ -33,9 +38,19 @@ namespace KingOrDeath
             quality = root.Q<DropdownField>("qualityField");
             fps = root.Q<DropdownField>("fpsField");
             language = root.Q<DropdownField>("languageField");
+            uiScale = root.Q<DropdownField>("uiScaleField");
             vsync = root.Q<Toggle>("vsyncToggle");
             hints = root.Q<Toggle>("settingsHints");
             volume = root.Q<Slider>("volumeSlider");
+            musicVolume = root.Q<Slider>("musicSlider");
+            sfxVolume = root.Q<Slider>("sfxSlider");
+            voiceVolume = root.Q<Slider>("voiceSlider");
+            cameraSpeed = root.Q<Slider>("cameraSlider");
+            edge = root.Q<Toggle>("edgeToggle");
+            damage = root.Q<Toggle>("damageToggle");
+            health = root.Q<Toggle>("healthToggle");
+            // effects volume previews with a click so the level can be judged before Apply
+            sfxVolume.RegisterValueChangedCallback(e => UiAudio.PlayAt("ui_click", e.newValue));
             sizes = Screen
                 .resolutions.Select(r => new Vector2Int(r.width, r.height))
                 .Append(new Vector2Int(Screen.width, Screen.height))
@@ -92,9 +107,18 @@ namespace KingOrDeath
             fps.index = Mathf.Max(0, Array.IndexOf(fpsValues, GameSettings.FpsLimit));
             language.choices = new List<string> { "English", "Русский" };
             language.index = Array.IndexOf(languages, GameSettings.Language);
+            uiScale.choices = uiScales.Select(v => Mathf.RoundToInt(v * 100) + "%").ToList();
+            uiScale.index = Mathf.Max(0, Array.FindIndex(uiScales, v => Mathf.Approximately(v, GameSettings.UiScale)));
             vsync.value = GameSettings.VSync;
             hints.value = GameSettings.Hints;
             volume.value = GameSettings.MasterVolume;
+            musicVolume.SetValueWithoutNotify(GameSettings.MusicVolume);
+            sfxVolume.SetValueWithoutNotify(GameSettings.SfxVolume);
+            voiceVolume.SetValueWithoutNotify(GameSettings.VoiceVolume);
+            cameraSpeed.SetValueWithoutNotify(GameSettings.CameraSpeed);
+            edge.SetValueWithoutNotify(GameSettings.EdgeScroll);
+            damage.SetValueWithoutNotify(GameSettings.DamageNumbers);
+            health.SetValueWithoutNotify(GameSettings.AlwaysHealth);
         }
 
         void Apply()
@@ -107,7 +131,15 @@ namespace KingOrDeath
             GameSettings.VSync = vsync.value;
             GameSettings.FpsLimit = fpsValues[fps.index];
             GameSettings.MasterVolume = volume.value;
+            GameSettings.MusicVolume = musicVolume.value;
+            GameSettings.SfxVolume = sfxVolume.value;
+            GameSettings.VoiceVolume = voiceVolume.value;
+            GameSettings.CameraSpeed = cameraSpeed.value;
+            GameSettings.EdgeScroll = edge.value;
+            GameSettings.DamageNumbers = damage.value;
+            GameSettings.AlwaysHealth = health.value;
             GameSettings.Hints = hints.value;
+            GameSettings.UiScale = uiScales[Mathf.Max(0, uiScale.index)];
             GameSettings.Language = languages[Mathf.Max(0, language.index)];
             GameSettings.Save();
             GameSettings.Apply();

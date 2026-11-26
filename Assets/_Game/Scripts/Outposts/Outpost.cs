@@ -19,6 +19,16 @@ namespace KingOrDeath
             Tick(.2f);
         }
 
+        public void ShowOwner()
+        {
+            if (flag)
+                flag.sharedMaterial = ModelFactory.Material(
+                    store.owner == Faction.Player ? ModelFactory.Teal
+                        : store.owner == Faction.Enemy ? ModelFactory.Red
+                        : ModelFactory.Gold
+                );
+        }
+
         public void Tick(float dt)
         {
             bool player = false,
@@ -54,15 +64,19 @@ namespace KingOrDeath
             {
                 store.owner = side;
                 progress = 0;
-                if (flag)
-                    flag.sharedMaterial = ModelFactory.Material(
-                        side == Faction.Player ? ModelFactory.Teal : ModelFactory.Red
-                    );
+                ShowOwner();
                 GameSession.I.Notify(
-                    store.title + " captured by " + side + ". Local stocks remain here."
+                    Loc.F("n.captured", Loc.Name(store.title), Loc.T("faction." + side)),
+                    side != Faction.Player,
+                    transform.position
                 );
                 if (side == Faction.Player)
                     GameSession.I.Mark("capture");
+                GameSession.I.Announce(
+                    side == Faction.Player ? "ann.captured" : "ann.lost",
+                    Loc.Name(store.title),
+                    side == Faction.Player ? "unit_store" : "unit_ashen"
+                );
             }
         }
     }

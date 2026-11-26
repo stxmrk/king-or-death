@@ -14,6 +14,9 @@ namespace KingOrDeath
         public bool selected;
         public UnitMotor Motor => GetComponent<UnitMotor>();
 
+        // Raised before damage is applied; the HUD shows floating numbers.
+        public static event System.Action<Unit, float> Damaged;
+
         public bool IsHostile(Unit other) =>
             other
             && faction != other.faction
@@ -33,15 +36,24 @@ namespace KingOrDeath
 
         public void Damage(float value)
         {
+            Damaged?.Invoke(this, value);
             health = Mathf.Max(0, health - value);
             if (health > 0)
                 return;
             if (kind == UnitKind.Wagon)
+            {
                 GetComponent<TradeRoute>().DropCargo();
+                GameSession.I.Announce("ann.wagon", Loc.T("ann.wagon.sub"), "unit_wagon");
+            }
             else
                 CorpseSystem.I.Create(this);
             if (faction == Faction.Player)
-                GameSession.I.Notify(title + " has fallen.");
+            {
+                GameSession.I.stats.unitsLost++;
+                GameSession.I.Notify(Loc.F("n.fallen", Loc.Name(title)), true, transform.position);
+            }
+            else
+                GameSession.I.stats.enemiesSlain++;
             gameObject.SetActive(false);
             Destroy(gameObject);
         }

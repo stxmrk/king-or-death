@@ -15,8 +15,16 @@ namespace KingOrDeath
 
         public Corpse Create(Unit unit)
         {
-            var go = new GameObject("Remains — " + unit.title);
-            go.transform.position = unit.transform.position + Vector3.up * .18f;
+            var corpse = Create(unit.kind, unit.faction, unit.transform.position);
+            corpse.name = "Remains — " + unit.title;
+            GameSession.I.Mark("remains");
+            return corpse;
+        }
+
+        public Corpse Create(UnitKind kind, Faction faction, Vector3 position)
+        {
+            var go = new GameObject("Remains");
+            go.transform.position = new Vector3(position.x, .18f, position.z);
             var body = ModelFactory.Part(
                 "Body",
                 PrimitiveType.Capsule,
@@ -24,7 +32,7 @@ namespace KingOrDeath
                 Vector3.zero,
                 new Vector3(.65f, .9f, .55f),
                 ModelFactory.Material(
-                    unit.faction == Faction.Player ? ModelFactory.Teal : ModelFactory.Red
+                    faction == Faction.Player ? ModelFactory.Teal : ModelFactory.Red
                 )
             );
             body.transform.localRotation = Quaternion.Euler(0, 0, 90);
@@ -39,10 +47,10 @@ namespace KingOrDeath
             var hit = go.AddComponent<BoxCollider>();
             hit.size = new Vector3(2.3f, .7f, 1);
             var corpse = go.AddComponent<Corpse>();
-            corpse.kind = unit.kind;
+            corpse.kind = kind;
+            corpse.faction = faction;
             corpse.diedAt = Time.time;
             remains.Add(corpse);
-            GameSession.I.Mark("remains");
             return corpse;
         }
     }

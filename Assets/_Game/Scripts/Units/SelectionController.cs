@@ -145,8 +145,6 @@ namespace KingOrDeath
                 return;
             if (Input.GetKeyDown(KeyCode.Alpha1))
                 SelectArmy();
-            if (Input.GetKeyDown(KeyCode.B))
-                placement.Begin();
             if (placement.active)
                 return;
             if (Input.GetMouseButtonDown(1) && !Hud.OverUI() && GroundPoint(out var goal))
@@ -182,6 +180,16 @@ namespace KingOrDeath
                     }
                     index++;
                 }
+                if (selected.Count > 0)
+                    UiAudio.Play("ui_tab", .6f);
+                if (selected.Count > 0)
+                    Hud.Order(
+                        victim ? victim.transform.position
+                            : node ? node.transform.position
+                            : corpse ? corpse.transform.position
+                            : goal,
+                        victim && selected.Exists(u => u && u.IsHostile(victim))
+                    );
                 GameSession.I.Mark("orders");
             }
         }

@@ -24,8 +24,24 @@ namespace KingOrDeath
                 x = -Input.GetAxis("Mouse X") * 3;
                 z = -Input.GetAxis("Mouse Y") * 3;
             }
+            else if (GameSettings.EdgeScroll && Application.isFocused && !RuntimeVerification.Active)
+            {
+                // push the camera when the pointer rests on a window edge (only while it is inside the window)
+                var m = Input.mousePosition;
+                if (m.x >= 0 && m.y >= 0 && m.x <= Screen.width && m.y <= Screen.height)
+                {
+                    if (m.x < 6)
+                        x = -1;
+                    else if (m.x > Screen.width - 6)
+                        x = 1;
+                    if (m.y < 6)
+                        z = -1;
+                    else if (m.y > Screen.height - 6)
+                        z = 1;
+                }
+            }
             var rot = Quaternion.Euler(0, yaw, 0);
-            focus += rot * new Vector3(x, 0, z) * Time.unscaledDeltaTime * zoom * .7f;
+            focus += rot * new Vector3(x, 0, z) * Time.unscaledDeltaTime * zoom * .7f * Mathf.Max(.25f, GameSettings.CameraSpeed);
             focus.x = Mathf.Clamp(focus.x, -55, 55);
             focus.z = Mathf.Clamp(focus.z, -39, 39);
             if (!Hud.OverUI())

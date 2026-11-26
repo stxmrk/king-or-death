@@ -11,18 +11,22 @@
             <ui:Button name="tabControls" text="set.tab.controls" class="tab" />
             <ui:Button name="tabGame" text="set.tab.game" class="tab" />
         </ui:VisualElement>
-        <ui:VisualElement name="pageVideo" class="panel settings-page">
+        <ui:VisualElement name="pageVideo" class="panel settings-page ornate">
             <ui:DropdownField name="windowField" label="set.window" class="setting" />
             <ui:DropdownField name="resolutionField" label="set.resolution" class="setting" />
             <ui:DropdownField name="qualityField" label="set.quality" class="setting" />
             <ui:DropdownField name="fpsField" label="set.fps" class="setting" />
             <ui:Toggle name="vsyncToggle" label="set.vsync" class="setting" />
         </ui:VisualElement>
-        <ui:VisualElement name="pageAudio" class="panel settings-page hidden">
+        <ui:VisualElement name="pageAudio" class="panel settings-page ornate hidden">
             <ui:Slider name="volumeSlider" label="set.master" low-value="0" high-value="1" class="setting" />
-            <ui:Label text="set.audio.note" class="item-meta" />
+            <ui:Slider name="musicSlider" label="set.music" low-value="0" high-value="1" class="setting" />
+            <ui:Slider name="sfxSlider" label="set.sfx" low-value="0" high-value="1" class="setting" />
+            <ui:Slider name="voiceSlider" label="set.voice" low-value="0" high-value="1" class="setting" />
         </ui:VisualElement>
-        <ui:VisualElement name="pageControls" class="panel settings-page hidden">
+        <ui:VisualElement name="pageControls" class="panel settings-page ornate hidden">
+            <ui:Toggle name="edgeToggle" label="set.edge" class="setting" />
+            <ui:Slider name="cameraSlider" label="set.camspeed" low-value="0.5" high-value="2" class="setting" />
             <ui:VisualElement class="control-row"><ui:Label text="ctl.camera" class="control-action" /><ui:Label text="ctl.camera.k" class="control-keys" /></ui:VisualElement>
             <ui:VisualElement class="control-row"><ui:Label text="ctl.zoom" class="control-action" /><ui:Label text="ctl.zoom.k" class="control-keys" /></ui:VisualElement>
             <ui:VisualElement class="control-row"><ui:Label text="ctl.home" class="control-action" /><ui:Label text="Home / F1" class="control-keys" /></ui:VisualElement>
@@ -30,11 +34,16 @@
             <ui:VisualElement class="control-row"><ui:Label text="ctl.army" class="control-action" /><ui:Label text="1" class="control-keys" /></ui:VisualElement>
             <ui:VisualElement class="control-row"><ui:Label text="ctl.order" class="control-action" /><ui:Label text="ctl.order.k" class="control-keys" /></ui:VisualElement>
             <ui:VisualElement class="control-row"><ui:Label text="ctl.build" class="control-action" /><ui:Label text="B" class="control-keys" /></ui:VisualElement>
+            <ui:VisualElement class="control-row"><ui:Label text="ctl.cards" class="control-action" /><ui:Label text="ctl.cards.k" class="control-keys" /></ui:VisualElement>
+            <ui:VisualElement class="control-row"><ui:Label text="ctl.quick" class="control-action" /><ui:Label text="F5 / F9" class="control-keys" /></ui:VisualElement>
             <ui:VisualElement class="control-row"><ui:Label text="ctl.pause" class="control-action" /><ui:Label text="ctl.pause.k" class="control-keys" /></ui:VisualElement>
             <ui:VisualElement class="control-row"><ui:Label text="ctl.menu" class="control-action" /><ui:Label text="Esc" class="control-keys" /></ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="pageGame" class="panel settings-page hidden">
+        <ui:VisualElement name="pageGame" class="panel settings-page ornate hidden">
             <ui:DropdownField name="languageField" label="set.language" class="setting" />
+            <ui:DropdownField name="uiScaleField" label="set.uiscale" class="setting" />
+            <ui:Toggle name="damageToggle" label="set.dmgnumbers" class="setting" />
+            <ui:Toggle name="healthToggle" label="set.hpbars" class="setting" />
             <ui:Toggle name="settingsHints" label="set.hints" class="setting" />
         </ui:VisualElement>
         <ui:VisualElement class="page-footer">

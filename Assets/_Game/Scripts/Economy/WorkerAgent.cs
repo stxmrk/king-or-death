@@ -10,7 +10,7 @@ namespace KingOrDeath
         public ResourceKind cargo;
         public Corpse corpse;
         public CorpseAction cleanup = CorpseAction.Bury;
-        public string state = "Idle";
+        public string state = "ws.Idle"; // Loc key: {0} carried, {1} cargo, {2} node resource
         Unit unit;
         float timer;
         bool delivering;
@@ -27,7 +27,7 @@ namespace KingOrDeath
                 corpse.claimed = false;
             corpse = null;
             node = null;
-            state = "Idle";
+            state = "ws.Idle";
             timer = 0;
         }
 
@@ -37,7 +37,7 @@ namespace KingOrDeath
             node = n;
             store = ResourceStore.NearestOwned(n.transform.position, unit.faction);
             delivering = carried > 0;
-            state = "To resource";
+            state = "ws.ToResource";
             unit.Motor.Go(delivering && store ? store.Dock : n.transform.position);
         }
 
@@ -49,7 +49,7 @@ namespace KingOrDeath
             corpse = c;
             c.claimed = true;
             cleanup = action;
-            state = action.ToString();
+            state = "ws." + action;
             unit.Motor.Go(c.transform.position);
         }
 
@@ -72,6 +72,8 @@ namespace KingOrDeath
                             corpse = null;
                         timer = 0;
                         GameSession.I.Mark("cleanup");
+                        if (cleanup != CorpseAction.Carry)
+                            GameSession.I.stats.remainsCleared++;
                     }
                 }
                 return;
@@ -83,7 +85,7 @@ namespace KingOrDeath
                 store = ResourceStore.NearestOwned(transform.position, unit.faction);
                 if (!store)
                 {
-                    state = "No friendly store";
+                    state = "ws.NoStore";
                     return;
                 }
                 delivering = carried > 0;
@@ -91,10 +93,11 @@ namespace KingOrDeath
             }
             if (delivering)
             {
-                state = "Delivering " + carried + " " + cargo;
+                state = "ws.Delivering";
                 if (Vector3.Distance(transform.position, store.Dock) < 3)
                 {
                     store.Add(cargo, carried);
+                    GameSession.I.stats.harvested += carried;
                     carried = 0;
                     delivering = false;
                     GameSession.I.Mark("harvest");
@@ -103,7 +106,7 @@ namespace KingOrDeath
             }
             else if (Vector3.Distance(transform.position, node.transform.position) < 3)
             {
-                state = "Gathering " + node.resource;
+                state = "ws.Gathering";
                 timer += Time.deltaTime;
                 if (timer >= GameSession.I.config.harvestSeconds)
                 {
@@ -113,7 +116,7 @@ namespace KingOrDeath
                     if (carried == 0)
                     {
                         Cancel();
-                        state = "Resource exhausted";
+                        state = "ws.Exhausted";
                         return;
                     }
                     delivering = true;
@@ -135,7 +138,7 @@ namespace KingOrDeath
             corpse.state = RemainsState.Exposed;
             corpse.claimed = false;
             corpse = null;
-            state = "Idle";
+            state = "ws.Idle";
         }
 
         void OnDisable()

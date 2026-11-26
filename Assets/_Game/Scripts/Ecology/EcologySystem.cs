@@ -40,13 +40,12 @@ namespace KingOrDeath
             bool hunt = scent >= cfg.remainsThreshold * .65f;
             if (hunt && !wolvesHunting)
             {
-                GameSession.I.Notify(
-                    "WOLVES — the scent of remains has drawn the pack from its forest den."
-                );
+                GameSession.I.Notify(Loc.T("n.wolves"), true, GameSession.I.den);
                 GameSession.I.Mark("wolves");
+                GameSession.I.Announce("ann.wolves", Loc.T("ann.wolves.sub"), "unit_wolf");
             }
             if (!hunt && wolvesHunting)
-                GameSession.I.Notify("The scent fades. Wolves return to their den.");
+                GameSession.I.Notify(Loc.T("n.wolves.gone"), false, GameSession.I.den);
             wolvesHunting = hunt;
             foreach (var u in Unit.All)
                 if (u.kind == UnitKind.Wolf)

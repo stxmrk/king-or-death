@@ -4,6 +4,8 @@ namespace KingOrDeath
 {
     public class BuildingPlacement : MonoBehaviour
     {
+        public const string HouseName = "Frontier house";
+
         public bool active;
         public string reason;
         GameObject ghost;
@@ -39,6 +41,8 @@ namespace KingOrDeath
                         Destroy(r.gameObject);
         }
 
+        public static void CreateHouse(Vector3 p) => ModelFactory.House(HouseName, p).AddComponent<Building>();
+
         void Update()
         {
             if (!active || PauseMenu.IsOpen)
@@ -63,13 +67,12 @@ namespace KingOrDeath
                 );
             if (Input.GetMouseButtonDown(0) && valid && store.Spend(50, 20))
             {
-                var go = ModelFactory.House("Frontier house", p);
-                go.AddComponent<Building>();
+                CreateHouse(p);
+                UiAudio.Play("sting_build");
                 NavGrid.I.Rebuild();
                 GameSession.I.Mark("build");
-                GameSession.I.Notify(
-                    "House built using resources at " + store.title + ". Territory is unchanged."
-                );
+                GameSession.I.stats.built++;
+                GameSession.I.Notify(Loc.F("n.built", Loc.Name(store.title)), false, p);
                 Cancel();
             }
         }

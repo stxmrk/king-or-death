@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="Shell.uss" />
+    <ui:VisualElement name="slotsPage" class="page">
+        <ui:VisualElement class="page-header">
+            <ui:Label name="slotsTitle" class="page-title" />
+            <ui:Button name="slotsBack" text="common.back" class="link-button" />
+        </ui:VisualElement>
+        <ui:VisualElement class="slots-body">
+            <ui:Button name="newSaveButton" text="save.new" class="gold-button gold-button--small slots-new" />
+            <ui:ScrollView name="slotList" class="slot-list" />
+            <ui:VisualElement name="slotsEmpty" class="panel slots-empty ornate">
+                <ui:Label text="save.empty" class="item-title" />
+                <ui:Label text="save.empty.hint" class="item-meta" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

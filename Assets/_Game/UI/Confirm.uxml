@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="Shell.uss" />
+    <ui:VisualElement name="confirmRoot" class="overlay">
+        <ui:VisualElement class="panel confirm-panel ornate">
+            <ui:Label name="confirmTitle" class="confirm-title" />
+            <ui:Label name="confirmText" class="body-text" />
+            <ui:VisualElement class="confirm-buttons">
+                <ui:Button name="confirmNo" text="common.cancel" class="ghost-button" />
+                <ui:Button name="confirmYes" class="gold-button gold-button--small" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

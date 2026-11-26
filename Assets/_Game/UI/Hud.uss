@@ -1,28 +1,66 @@
+/* In-match HUD. Palette: ink rgb(12,17,18), panel rgb(18,25,26), line rgb(52,60,58), gold rgb(191,158,92),
+   cream rgb(232,226,200), muted rgb(150,150,130), crown teal rgb(94,191,143), ashen red rgb(196,72,48). */
+
 .root .hud-small {
-    font-size: 13px;
+    font-size: 14px;
+}
+
+.root .hud-tiny {
+    font-size: 12px;
+    color: rgb(170, 168, 146);
+}
+
+.root .hud-wrap {
+    white-space: normal;
+}
+
+.hud-emblem {
+    width: 28px;
+    height: 35px;
+    margin-right: 10px;
 }
 
 .root .hud-title {
     -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
-    font-size: 30px;
+    font-size: 26px;
     color: rgb(191, 158, 92);
+    margin-right: 22px;
+    letter-spacing: 1px;
 }
 
 .root .hud-heading {
     -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
-    font-size: 21px;
-    color: rgb(191, 158, 92);
-    margin-bottom: 8px;
+    font-size: 19px;
+    color: rgb(241, 235, 210);
 }
 
 .root .hud-caption {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
+    font-size: 12px;
     letter-spacing: 2px;
-    color: rgb(185, 185, 160);
-    margin-bottom: 10px;
+    color: rgb(150, 150, 130);
+    margin-bottom: 6px;
+}
+
+.root .hud-caption--gold {
+    color: rgb(191, 158, 92);
+}
+
+.root .hud-caption--muted {
+    color: rgb(150, 150, 130);
 }
 
 .root .hud-line {
-    margin-bottom: 7px;
+    margin-bottom: 5px;
+}
+
+.root .hud-key {
+    font-size: 12px;
+    color: rgb(191, 158, 92);
+    border-width: 1px;
+    border-color: rgb(120, 100, 62);
+    padding: 0 5px;
+    -unity-text-align: middle-center;
 }
 
 .hud-row {
@@ -30,19 +68,43 @@
     align-items: center;
 }
 
-.hud-row--gap {
-    margin-bottom: 6px;
+.hud-row--between {
+    justify-content: space-between;
 }
+
+.hud-row--gap {
+    margin-top: 6px;
+}
+
+.hud-grow {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.hud-card {
+    background-color: rgba(12, 17, 18, 0.9);
+    background-image: url("project://database/Assets/_Game/Art/UI/Texture/panel.png");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    -unity-background-image-tint-color: rgba(175, 175, 175, 0.92);
+    border-width: 1px;
+    border-color: rgb(42, 50, 49);
+    border-left-width: 2px;
+    border-left-color: rgb(191, 158, 92);
+    padding: 10px 14px;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
 
 .root .hud-button {
     height: 28px;
-    min-width: 86px;
     margin: 0 6px 0 0;
     padding: 0 10px;
     border-width: 1px;
-    border-color: rgb(58, 65, 64);
+    border-color: rgb(58, 66, 64);
     border-radius: 0;
-    background-color: rgb(22, 30, 31);
+    background-color: rgb(20, 28, 29);
     color: rgb(222, 222, 191);
     font-size: 13px;
     transition-duration: 0.1s;
@@ -58,14 +120,20 @@
     background-color: rgba(191, 158, 92, 0.3);
 }
 
-.root .hud-button--wide {
-    width: 236px;
-    margin-bottom: 6px;
+.root .hud-button--grow {
+    flex-grow: 1;
+    flex-basis: 0;
 }
 
-.root .hud-button--half {
-    width: 115px;
-    min-width: 0;
+.root .hud-button--gold {
+    border-color: rgb(191, 158, 92);
+    color: rgb(191, 158, 92);
+}
+
+.root .hud-button--on {
+    border-color: rgb(191, 158, 92);
+    background-color: rgba(191, 158, 92, 0.22);
+    color: rgb(241, 235, 210);
 }
 
 /* Top bar */
@@ -75,71 +143,253 @@
     left: 0;
     top: 0;
     right: 0;
-    height: 82px;
+    height: 52px;
     flex-direction: row;
     align-items: center;
-    padding: 0 24px;
+    padding: 0 16px;
+    background-color: rgba(10, 14, 15, 0.94);
+    background-image: url("project://database/Assets/_Game/Art/UI/Texture/panel.png");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    -unity-background-image-tint-color: rgba(165, 165, 165, 0.97);
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(120, 100, 62);
 }
 
-.hud-brand {
-    width: 366px;
+.hud-tabs {
+    flex-direction: row;
+    height: 100%;
 }
 
-.hud-store {
+.root .store-tab {
+    height: 100%;
+    margin: 0;
+    padding: 0 14px;
+    border-width: 0;
+    border-bottom-width: 2px;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(150, 150, 130);
+    font-size: 14px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.root .store-tab:hover {
+    background-color: rgba(191, 158, 92, 0.08);
+    color: rgb(241, 235, 210);
+}
+
+.root .store-tab--active {
+    border-bottom-color: rgb(191, 158, 92);
+    background-color: rgba(191, 158, 92, 0.12);
+    color: rgb(241, 235, 210);
+}
+
+.store-dot {
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 4px;
+    background-color: rgb(150, 150, 130);
+}
+
+.store-tab--Player .store-dot {
+    background-color: rgb(94, 191, 143);
+}
+
+.store-tab--Enemy .store-dot {
+    background-color: rgb(196, 72, 48);
+}
+
+.hud-resources {
+    flex-direction: row;
+    align-items: center;
+    margin-left: 18px;
     flex-grow: 1;
 }
 
-.root .hud-store .unity-label {
-    margin-bottom: 4px;
+.hud-res {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.hud-res-icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 7px;
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.root .hud-res-value {
+    font-size: 17px;
+    color: rgb(241, 235, 210);
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
+    min-width: 30px;
+}
+
+.hud-sep {
+    width: 1px;
+    height: 26px;
+    margin: 0 18px 0 2px;
+    background-color: rgb(58, 66, 64);
+}
+
+.hud-time {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 18px;
+}
+
+.root .hud-clock {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
+    font-size: 18px;
+    color: rgb(191, 158, 92);
+    margin-right: 10px;
+    min-width: 52px;
+    -unity-text-align: middle-right;
+}
+
+.root .speed-button {
+    width: 34px;
+    height: 28px;
+    margin: 0 0 0 -1px;
+    padding: 0;
+    border-width: 1px;
+    border-color: rgb(58, 66, 64);
+    border-radius: 0;
+    background-color: rgb(20, 28, 29);
+    color: rgb(170, 168, 146);
+    font-size: 13px;
+}
+
+.root .speed-button:hover {
+    color: rgb(241, 235, 210);
+    background-color: rgb(32, 40, 38);
+}
+
+.root .speed-button--on {
+    background-color: rgb(191, 158, 92);
+    border-color: rgb(191, 158, 92);
+    color: rgb(14, 19, 20);
 }
 
 .hud-top-right {
-    align-items: flex-end;
+    flex-direction: row;
+    align-items: center;
 }
 
-.root .hud-version {
-    margin-top: 8px;
-    color: rgb(138, 138, 120);
-}
+/* Event log */
 
-/* Floating panels */
-
-.hud-notice {
+.hud-log {
     position: absolute;
-    left: 24px;
-    top: 100px;
-    max-width: 930px;
-    padding: 14px 16px;
+    left: 16px;
+    top: 64px;
+    width: 470px;
 }
+
+.log-entry {
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: rgba(10, 14, 15, 0.86);
+    border-left-width: 2px;
+    border-left-color: rgb(191, 158, 92);
+    padding: 6px 10px;
+    margin-bottom: 4px;
+}
+
+.log-entry--alert {
+    border-left-color: rgb(196, 72, 48);
+    background-color: rgba(40, 14, 10, 0.88);
+}
+
+.root .log-time {
+    font-size: 12px;
+    color: rgb(150, 150, 130);
+    width: 44px;
+    margin-top: 1px;
+}
+
+.root .log-text {
+    font-size: 14px;
+    white-space: normal;
+    flex-shrink: 1;
+}
+
+.root .log-entry--alert .log-text {
+    color: rgb(255, 214, 190);
+}
+
+/* Help, side panels */
 
 .hud-help {
     position: absolute;
-    left: 24px;
-    top: 165px;
-    width: 430px;
-    padding: 12px 16px 10px 16px;
+    left: 16px;
+    bottom: 214px;
+    width: 400px;
 }
 
-.hud-objectives {
+.hud-side {
     position: absolute;
     right: 16px;
-    top: 100px;
-    width: 270px;
-    padding: 12px 16px;
+    top: 64px;
+    width: 290px;
+}
+
+.hud-meter {
+    height: 4px;
+    background-color: rgb(42, 49, 50);
+    margin-bottom: 8px;
+}
+
+.hud-meter-fill {
+    height: 100%;
+    width: 0;
+    background-color: rgb(191, 158, 92);
+}
+
+.hud-meter--threat {
+    margin: 5px 0 4px 0;
+    height: 5px;
+}
+
+.hud-meter--threat .hud-meter-fill {
+    background-color: rgb(150, 120, 70);
+}
+
+.hud-meter--danger .hud-meter-fill {
+    background-color: rgb(196, 72, 48);
+}
+
+.hud-meter-mark {
+    position: absolute;
+    top: -3px;
+    width: 2px;
+    height: 11px;
+    background-color: rgb(241, 235, 210);
+}
+
+.hud-meter--cargo {
+    margin: 8px 0 2px 0;
 }
 
 .objective {
     flex-direction: row;
     align-items: center;
-    height: 25px;
+    height: 22px;
 }
 
 .objective-mark {
-    width: 7px;
-    height: 7px;
+    width: 9px;
+    height: 9px;
     margin-right: 10px;
     border-width: 1px;
-    border-color: rgb(138, 138, 120);
+    border-color: rgb(120, 120, 104);
+    rotate: 45deg;
 }
 
 .objective--done .objective-mark {
@@ -147,32 +397,214 @@
     border-color: rgb(191, 158, 92);
 }
 
-.root .objective--done .unity-label {
-    color: rgb(138, 138, 120);
+.objective--next .objective-mark {
+    border-color: rgb(191, 158, 92);
+    border-width: 2px;
 }
 
-.root .hud-scent {
-    margin-top: 6px;
+.root .objective--next .unity-label {
+    color: rgb(241, 235, 210);
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
 }
+
+.next-objective {
+    margin-top: 8px;
+    padding: 8px 10px;
+    background-color: rgba(191, 158, 92, 0.1);
+    border-left-width: 2px;
+    border-left-color: rgb(191, 158, 92);
+}
+
+.log-entry--link:hover {
+    border-left-width: 4px;
+    background-color: rgba(30, 38, 36, 0.95);
+}
+
+.root .objective--done .unity-label {
+    color: rgb(120, 120, 104);
+}
+
+.threat {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.threat-icon {
+    width: 42px;
+    height: 42px;
+    margin-right: 10px;
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.threat-body {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.root .threat--active .threat-icon {
+    border-color: rgb(196, 72, 48);
+}
+
+.root .threat--active .unity-label {
+    color: rgb(255, 190, 160);
+}
+
+/* Banners */
 
 .hud-banner {
     position: absolute;
     left: 50%;
-    top: 640px;
-    width: 520px;
-    margin-left: -260px;
-    padding: 15px 16px;
+    bottom: 214px;
+    width: 560px;
+    margin-left: -280px;
+    align-items: center;
 }
 
 .hud-paused {
     position: absolute;
-    left: 50%;
-    top: 390px;
-    width: 300px;
-    height: 80px;
-    margin-left: -150px;
+    left: 0;
+    right: 0;
+    bottom: 236px;
     align-items: center;
-    justify-content: center;
+}
+
+/* Announcement */
+
+.hud-announce {
+    position: absolute;
+    left: 50%;
+    top: 78px;
+    width: 600px;
+    margin-left: -300px;
+    padding: 14px 0 16px 0;
+    align-items: center;
+    background-color: rgba(8, 11, 12, 0.78);
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: rgb(120, 100, 62);
+}
+
+.announce-icon {
+    width: 72px;
+    height: 72px;
+    border-width: 1px;
+    border-color: rgb(191, 158, 92);
+    -unity-background-scale-mode: scale-and-crop;
+    margin-bottom: 6px;
+}
+
+.root .announce-title {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
+    font-size: 56px;
+    letter-spacing: 6px;
+    color: rgb(214, 182, 118);
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95);
+}
+
+.announce-divider {
+    width: 340px;
+    margin: -6px 0 2px 0;
+}
+
+.root .announce-text {
+    font-size: 19px;
+    color: rgb(241, 235, 210);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+}
+
+/* World hover */
+
+.hud-hover {
+    position: absolute;
+    min-width: 150px;
+    padding: 6px 10px 7px 10px;
+    background-color: rgba(10, 14, 15, 0.92);
+    border-width: 1px;
+    border-color: rgb(120, 100, 62);
+}
+
+.root .hover-title {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
+    color: rgb(241, 235, 210);
+}
+
+.hover-bar {
+    height: 4px;
+    margin-top: 5px;
+    background-color: rgb(30, 16, 14);
+}
+
+.hover-fill {
+    height: 100%;
+    background-color: rgb(94, 191, 143);
+}
+
+.hover-fill--foe {
+    background-color: rgb(196, 72, 48);
+}
+
+.hud-tooltip .corner-ornament {
+    width: 28px;
+    height: 28px;
+}
+
+.hud-crest {
+    position: absolute;
+    left: 50%;
+    width: 320px;
+    height: 26px;
+    margin-left: -160px;
+}
+
+.root .hud-paused-text {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
+    font-size: 44px;
+    letter-spacing: 8px;
+    color: rgb(191, 158, 92);
+    padding: 4px 48px;
+    background-color: rgba(10, 14, 15, 0.8);
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: rgb(120, 100, 62);
+}
+
+/* Tooltip */
+
+.hud-tooltip {
+    position: absolute;
+    width: 300px;
+    padding: 10px 14px 12px 14px;
+    background-color: rgba(10, 14, 15, 0.97);
+    border-width: 1px;
+    border-color: rgb(120, 100, 62);
+}
+
+.root .hud-tooltip .hud-heading {
+    font-size: 16px;
+}
+
+#tooltipCost {
+    margin: 6px 0;
+}
+
+.cost {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.cost-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.root .cost--short .unity-label {
+    color: rgb(230, 110, 85);
 }
 
 /* Bottom bar */
@@ -182,59 +614,306 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 190px;
+    height: 200px;
     flex-direction: row;
     padding: 12px 16px;
+    background-color: rgba(10, 14, 15, 0.95);
+    background-image: url("project://database/Assets/_Game/Art/UI/Texture/panel.png");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    -unity-background-image-tint-color: rgba(165, 165, 165, 0.97);
+    border-top-width: 1px;
+    border-top-color: rgb(120, 100, 62);
+}
+
+.hud-map-frame {
+    width: 236px;
+    height: 176px;
+    padding: 3px;
+    border-width: 1px;
+    border-color: rgb(120, 100, 62);
+    background-color: rgb(6, 9, 10);
+    margin-right: 18px;
 }
 
 .hud-minimap {
-    width: 240px;
-    height: 160px;
-    margin: 2px 24px 0 0;
+    flex-grow: 1;
+    -unity-background-scale-mode: stretch-to-fill;
 }
 
-.hud-column--selection {
-    width: 400px;
-    margin-right: 24px;
+.hud-selection {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 300px;
+    margin-right: 18px;
 }
 
-.hud-column--dev {
-    width: 260px;
+.hud-single {
+    flex-direction: row;
 }
 
-.hud-column--caravan {
-    margin-left: auto;
-    width: 400px;
+.hud-portrait {
+    width: 128px;
+    height: 128px;
+    margin-right: 16px;
+    border-width: 1px;
+    border-color: rgb(191, 158, 92);
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.hud-single-body {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.hud-health {
+    height: 16px;
+    margin: 8px 0 8px 0;
+    background-color: rgb(30, 16, 14);
+    border-width: 1px;
+    border-color: rgb(58, 66, 64);
+}
+
+.hud-health-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgb(84, 168, 124);
+}
+
+.hud-health--low .hud-health-fill {
+    background-color: rgb(196, 72, 48);
+}
+
+.root .hud-health-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 11px;
+    -unity-text-align: middle-center;
+    color: rgb(241, 235, 210);
+}
+
+.hud-multi {
+    flex-grow: 1;
+}
+
+.hud-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.unit-tile {
+    width: 46px;
+    height: 46px;
+    margin: 0 4px 4px 0;
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.unit-tile:hover {
+    border-color: rgb(241, 235, 210);
+}
+
+.tile-bar {
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    height: 4px;
+    background-color: rgb(30, 16, 14);
+}
+
+.tile-fill {
+    height: 100%;
+    background-color: rgb(94, 191, 143);
+}
+
+/* Command card */
+
+.hud-card-column {
+    width: 276px;
+    flex-shrink: 0;
+    margin-right: 18px;
+}
+
+.hud-commands {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.root .cmd {
+    width: 62px;
+    height: 62px;
+    margin: 0 6px 6px 0;
+    padding: 0;
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    border-radius: 0;
+    background-color: rgb(20, 28, 29);
+    -unity-background-scale-mode: scale-and-crop;
+    transition-duration: 0.08s;
+}
+
+.root .cmd:hover {
+    border-color: rgb(241, 235, 210);
+    -unity-background-image-tint-color: rgb(255, 250, 235);
+    scale: 1.04 1.04;
+}
+
+.root .cmd:active {
+    scale: 0.96 0.96;
+}
+
+.root .cmd--active {
+    border-width: 2px;
+    border-color: rgb(191, 158, 92);
+}
+
+.root .cmd--dim {
+    -unity-background-image-tint-color: rgb(110, 110, 110);
+}
+
+.root .cmd-key {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    font-size: 11px;
+    padding: 0 3px;
+    background-color: rgba(10, 14, 15, 0.85);
+    color: rgb(191, 158, 92);
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
+}
+
+/* Caravan */
+
+.hud-caravan {
+    width: 340px;
+}
+
+.hud-caravan-icon {
+    width: 56px;
+    height: 56px;
+    margin-right: 12px;
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    -unity-background-scale-mode: scale-and-crop;
 }
 
 /* World layer */
 
 .post-tag {
     position: absolute;
-    width: 145px;
-    height: 40px;
-    padding: 4px 8px;
-    background-color: rgba(14, 19, 20, 0.95);
+    width: 150px;
+    padding: 4px 8px 5px 8px;
+    background-color: rgba(10, 14, 15, 0.88);
+    border-left-width: 2px;
+    border-left-color: rgb(150, 150, 130);
+}
+
+.post-tag--Player {
+    border-left-color: rgb(94, 191, 143);
+}
+
+.post-tag--Enemy {
+    border-left-color: rgb(196, 72, 48);
 }
 
 .post-tag-bar {
-    margin-top: auto;
-    height: 4px;
-    background-color: rgb(64, 71, 56);
+    margin-top: 4px;
+    height: 3px;
+    background-color: rgb(52, 60, 58);
 }
 
 .post-tag-fill {
-    height: 4px;
+    height: 3px;
     background-color: rgb(191, 158, 92);
 }
 
 .post-tag--contested .post-tag-fill {
-    background-color: rgb(184, 51, 36);
+    background-color: rgb(196, 72, 48);
 }
 
 .hud-drag {
     position: absolute;
     border-width: 1px;
-    border-color: rgb(102, 191, 166);
-    background-color: rgba(102, 191, 166, 0.18);
+    border-color: rgb(191, 158, 92);
+    background-color: rgba(191, 158, 92, 0.12);
+}
+
+
+.hud-crest--top {
+    bottom: -14px;
+}
+
+.hud-crest--bottom {
+    top: -15px;
+}
+
+/* Compact top bar when the logical width is under 1500 px (see Hud.Update) */
+
+.hud--compact .hud-title,
+.hud--compact .hud-forces {
+    display: none;
+}
+
+.hud--compact .store-tab {
+    padding: 0 8px;
+}
+
+/* keep the side column above the bottom bar: progress and the next hint stay, the full list folds away */
+.hud--compact #objectiveList,
+.hud--compact #selectCaravanButton {
+    display: none;
+}
+
+/* Resource deltas under the top-bar stock (Hud.Float) */
+
+.root .res-delta {
+    position: absolute;
+    left: 36px;
+    top: 30px;
+    font-size: 14px;
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.root .res-delta--gain {
+    color: rgb(140, 220, 160);
+}
+
+.root .res-delta--loss {
+    color: rgb(240, 120, 95);
+}
+
+/* Floating damage numbers (Hud.OnDamaged) */
+
+.root .hit {
+    position: absolute;
+    font-size: 15px;
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
+}
+
+.root .hit--ours {
+    color: rgb(255, 120, 90);
+}
+
+.root .hit--theirs {
+    color: rgb(255, 235, 185);
+}
+
+/* Plain tooltips (Hud.RefreshTip) */
+
+.hud-uitip {
+    position: absolute;
+    max-width: 320px;
+    padding: 7px 11px 8px 11px;
+    background-color: rgba(8, 11, 12, 0.96);
+    border-width: 1px;
+    border-color: rgb(120, 100, 62);
 }

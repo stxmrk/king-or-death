@@ -11,7 +11,7 @@ namespace KingOrDeath
         public int cargo;
         public bool paused = true;
         public bool outbound;
-        public string state = "No route";
+        public string state = "ts.NoRoute"; // Loc key, {0} = resource
         public Unit escort;
         Unit unit;
         float timer;
@@ -37,7 +37,7 @@ namespace KingOrDeath
             paused = false;
             outbound = cargo > 0;
             unit.Motor.Go(outbound ? to.Dock : from.Dock);
-            state = "To source";
+            state = "ts.ToSource";
             return true;
         }
 
@@ -55,26 +55,26 @@ namespace KingOrDeath
             if (paused || !source || !destination)
             {
                 if (paused)
-                    state = "Stopped";
+                    state = "ts.Stopped";
                 return;
             }
             if (source.owner != unit.faction || destination.owner != unit.faction)
             {
                 paused = true;
                 unit.Motor.Stop();
-                state = "Route suspended: ownership lost";
-                GameSession.I.Notify(state);
+                state = "ts.Suspended";
+                GameSession.I.Notify(Loc.T("n.route.lost"), true, transform.position);
                 return;
             }
             if (unit.Motor.blocked)
             {
-                state = "Route blocked — retrying";
+                state = "ts.Blocked";
                 return;
             }
             var goal = outbound ? destination : source;
             if (Vector3.Distance(transform.position, goal.Dock) > 3)
             {
-                state = outbound ? "Delivering" : "Returning";
+                state = outbound ? "ts.Delivering" : "ts.Returning";
                 return;
             }
             timer += Time.deltaTime;
@@ -85,11 +85,16 @@ namespace KingOrDeath
             {
                 goal.Add(carriedResource, cargo);
                 Delivered += cargo;
+                GameSession.I.stats.delivered += cargo;
                 if (cargo > 0)
                 {
+                    if (!GameSession.I.milestones.Contains("delivery"))
+                        GameSession.I.Announce("ann.delivery", Loc.Name(goal.title), "unit_wagon");
                     GameSession.I.Mark("delivery");
                     GameSession.I.Notify(
-                        cargo + " " + carriedResource + " delivered to " + goal.title
+                        Loc.F("n.delivered", cargo, Loc.T("res." + carriedResource), Loc.Name(goal.title)),
+                        false,
+                        goal.Dock
                     );
                 }
                 cargo = 0;
@@ -102,7 +107,7 @@ namespace KingOrDeath
                 cargo = source.Take(resource, GameSession.I.config.wagonCapacity);
                 if (cargo == 0)
                 {
-                    state = "Waiting for " + resource;
+                    state = "ts.Waiting";
                     return;
                 }
                 outbound = true;
@@ -120,7 +125,7 @@ namespace KingOrDeath
             node.resource = carriedResource;
             node.remaining = cargo / 2;
             cargo = 0;
-            GameSession.I.Notify("Wagon destroyed. Half the cargo is recoverable at the wreck.");
+            GameSession.I.Notify(Loc.T("n.wagon"), true, transform.position);
         }
     }
 }

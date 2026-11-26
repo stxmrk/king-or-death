@@ -1,18 +1,42 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements">
     <ui:Style src="Shell.uss" />
     <ui:Template name="Settings" src="Settings.uxml" />
+    <ui:Template name="SaveSlots" src="SaveSlots.uxml" />
+    <ui:Template name="Confirm" src="Confirm.uxml" />
     <ui:VisualElement name="pauseRoot" class="root overlay hidden">
-        <ui:VisualElement name="pausePanel" class="panel pause-panel">
+        <ui:VisualElement name="pausePanel" class="panel pause-panel ornate">
+            <ui:VisualElement class="pause-emblem emblem" />
             <ui:Label text="pause.title" class="pause-title" />
+            <ui:VisualElement class="divider pause-divider" />
             <ui:Label name="pauseSubtitle" class="item-meta pause-subtitle" />
             <ui:Button name="resumeButton" text="pause.resume" class="menu-button menu-button--center" />
             <ui:Button name="saveButton" text="pause.save" class="menu-button menu-button--center" />
+            <ui:Button name="pauseLoadButton" text="menu.load" class="menu-button menu-button--center" />
             <ui:Button name="pauseSettingsButton" text="menu.settings" class="menu-button menu-button--center" />
             <ui:Button name="restartButton" text="pause.restart" class="menu-button menu-button--center" />
             <ui:Button name="mainMenuButton" text="pause.mainmenu" class="menu-button menu-button--center" />
             <ui:Button name="pauseQuitButton" text="pause.quit" class="menu-button menu-button--center" />
             <ui:Label text="pause.warn" class="pause-note" />
         </ui:VisualElement>
+        <ui:VisualElement name="resultsScreen" class="screen results-screen hidden">
+          <ui:VisualElement name="resultsArt" class="results-art" />
+          <ui:VisualElement class="panel results-panel ornate">
+            <ui:VisualElement class="results-emblem emblem" />
+            <ui:Label name="resultsTitle" class="results-title" />
+            <ui:VisualElement class="divider results-divider" />
+            <ui:Label name="resultsSubtitle" class="body-text results-subtitle" />
+            <ui:VisualElement name="resultsStats" class="results-stats" />
+            <ui:VisualElement class="results-buttons">
+                <ui:Button name="resultsContinue" text="results.continue" class="ghost-button" />
+                <ui:Button name="resultsLoad" text="menu.load" class="ghost-button" />
+                <ui:Button name="resultsRestart" text="pause.restart" class="ghost-button" />
+                <ui:Button name="resultsMenu" text="pause.mainmenu" class="gold-button gold-button--small" />
+            </ui:VisualElement>
+          </ui:VisualElement>
+        </ui:VisualElement>
         <ui:Instance template="Settings" name="settingsScreen" class="screen dim hidden" />
+        <ui:Instance template="SaveSlots" name="slotsScreen" class="screen dim hidden" />
+        <ui:Instance template="Confirm" name="confirmScreen" class="screen hidden" />
     </ui:VisualElement>
+    <ui:VisualElement name="fader" class="fader fader--on" picking-mode="Ignore" />
 </ui:UXML>

@@ -25,6 +25,59 @@
     top: 0;
     right: 0;
     bottom: 0;
+    transition-property: opacity, translate;
+    transition-duration: 0.28s, 0.28s;
+    transition-timing-function: ease-out-cubic, ease-out-cubic;
+}
+
+/* Start state for UiFx.Reveal: removed one frame after showing so the transition plays. */
+.enter {
+    opacity: 0;
+    translate: 0 14px;
+}
+
+/* Gilded art (tools/art_gen.py Ornament/, black keyed to alpha) */
+
+.emblem {
+    background-image: url("project://database/Assets/_Game/Art/UI/Ornament/emblem.png");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.divider {
+    height: 28px;
+    background-image: url("project://database/Assets/_Game/Art/UI/Ornament/divider.png");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.corner-ornament {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    background-image: url("project://database/Assets/_Game/Art/UI/Ornament/corner.png");
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.corner--tl {
+    left: -6px;
+    top: -6px;
+}
+
+.corner--tr {
+    right: -6px;
+    top: -6px;
+    scale: -1 1;
+}
+
+.corner--bl {
+    left: -6px;
+    bottom: -6px;
+    scale: 1 -1;
+}
+
+.corner--br {
+    right: -6px;
+    bottom: -6px;
+    scale: -1 -1;
 }
 
 .art {
@@ -35,6 +88,17 @@
     bottom: 0;
     background-image: url("project://database/Assets/_Game/Art/UI/menu_bg.png");
     -unity-background-scale-mode: scale-and-crop;
+}
+
+.art {
+    transition-property: scale, translate;
+    transition-duration: 40s, 40s;
+    transition-timing-function: ease-in-out-sine, ease-in-out-sine;
+}
+
+.art--drift {
+    scale: 1.07 1.07;
+    translate: -28px 10px;
 }
 
 .art--loading {
@@ -67,6 +131,10 @@
 
 .panel {
     background-color: rgba(14, 19, 20, 0.95);
+    background-image: url("project://database/Assets/_Game/Art/UI/Texture/panel.png");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    -unity-background-image-tint-color: rgba(190, 190, 190, 0.94);
     border-top-width: 2px;
     border-top-color: rgb(191, 158, 92);
 }
@@ -76,13 +144,25 @@
 .main-column {
     position: absolute;
     left: 120px;
-    top: 120px;
+    top: 44px;
     width: 600px;
+}
+
+.title-emblem {
+    width: 70px;
+    height: 87px;
+    margin: 0 0 6px 4px;
+}
+
+.title-divider {
+    width: 330px;
+    height: 42px;
+    margin: 0 0 18px -6px;
 }
 
 .root .title {
     -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
-    font-size: 104px;
+    font-size: 88px;
     color: rgb(191, 158, 92);
     letter-spacing: 2px;
 }
@@ -91,7 +171,7 @@
     font-size: 15px;
     letter-spacing: 4px;
     color: rgb(185, 185, 160);
-    margin: 10px 0 52px 0;
+    margin: 10px 0 12px 4px;
 }
 
 .menu-list {
@@ -99,8 +179,8 @@
 }
 
 .root .menu-button {
-    height: 52px;
-    margin: 0 0 6px 0;
+    height: 46px;
+    margin: 0 0 4px 0;
     padding: 0 20px;
     border-width: 0;
     border-left-width: 3px;
@@ -115,6 +195,7 @@
 
 .root .menu-button:hover,
 .root .menu-button:focus {
+    padding-left: 30px;
     background-color: rgba(191, 158, 92, 0.16);
     border-left-color: rgb(191, 158, 92);
     color: rgb(241, 235, 210);
@@ -124,6 +205,20 @@
     color: rgb(138, 138, 120);
     background-color: rgba(0, 0, 0, 0);
     border-left-color: rgba(0, 0, 0, 0);
+}
+
+.root .menu-meta {
+    position: absolute;
+    right: 16px;
+    top: 0;
+    bottom: 0;
+    font-size: 14px;
+    color: rgb(150, 150, 130);
+    -unity-text-align: middle-right;
+}
+
+.root .menu-button:disabled .menu-meta {
+    display: none;
 }
 
 .root .menu-button--center {
@@ -328,6 +423,16 @@
     bottom: 64px;
 }
 
+.loading-emblem {
+    width: 46px;
+    height: 57px;
+    margin-right: 18px;
+}
+
+.root .loading-row .loading-title {
+    flex-grow: 1;
+}
+
 .loading-row {
     flex-direction: row;
     justify-content: space-between;
@@ -379,7 +484,20 @@
 
 .pause-panel {
     width: 420px;
-    padding: 36px 40px;
+    padding: 30px 40px 32px 40px;
+}
+
+.pause-emblem {
+    width: 58px;
+    height: 72px;
+    align-self: center;
+    margin-bottom: 2px;
+}
+
+.pause-divider {
+    width: 260px;
+    align-self: center;
+    margin: 2px 0 0 0;
 }
 
 .root .pause-title {
@@ -510,4 +628,379 @@
     flex-direction: row;
     justify-content: flex-end;
     margin-top: 24px;
+}
+
+/* Confirm dialog */
+
+.confirm-panel {
+    width: 560px;
+    padding: 30px 36px 28px 36px;
+}
+
+.root .confirm-title {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
+    font-size: 38px;
+    color: rgb(191, 158, 92);
+    margin-bottom: 12px;
+}
+
+.confirm-buttons {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+/* Save slots */
+
+.slots-body {
+    flex-grow: 1;
+    max-width: 1100px;
+}
+
+.root .slots-new {
+    align-self: flex-start;
+    margin-bottom: 18px;
+}
+
+.slot-list {
+    flex-grow: 1;
+}
+
+.slot-row {
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 18px;
+    margin-bottom: 6px;
+    background-color: rgba(14, 19, 20, 0.95);
+    border-left-width: 3px;
+    border-left-color: rgb(58, 65, 64);
+}
+
+.slot-row:hover {
+    border-left-color: rgb(191, 158, 92);
+    background-color: rgba(191, 158, 92, 0.1);
+}
+
+.slot-info {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.root .slot-row .link-button {
+    margin-left: 8px;
+    color: rgb(185, 185, 160);
+}
+
+.root .slot-row .link-button:hover {
+    color: rgb(230, 110, 85);
+}
+
+.slots-empty {
+    padding: 28px 32px;
+}
+
+/* Results */
+
+.results-screen {
+    align-items: center;
+    justify-content: center;
+}
+
+.results-art {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("project://database/Assets/_Game/Art/UI/results_victory.png");
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-background-image-tint-color: rgb(150, 150, 150);
+}
+
+.results-art--defeat {
+    background-image: url("project://database/Assets/_Game/Art/UI/results_defeat.png");
+}
+
+.results-panel {
+    width: 860px;
+    padding: 28px 44px 32px 44px;
+    background-color: rgba(10, 14, 15, 0.9);
+}
+
+.results-emblem {
+    width: 64px;
+    height: 80px;
+    align-self: center;
+}
+
+.results-divider {
+    width: 360px;
+    align-self: center;
+    margin-bottom: 4px;
+}
+
+.root .results-title {
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/CormorantSC-Bold.ttf");
+    font-size: 72px;
+    color: rgb(191, 158, 92);
+    -unity-text-align: middle-center;
+    letter-spacing: 4px;
+}
+
+.root .results-title--defeat {
+    color: rgb(196, 72, 48);
+}
+
+.root .results-title,
+.root .pause-title,
+.root .title {
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.85);
+}
+
+.root .results-subtitle {
+    -unity-text-align: middle-center;
+    color: rgb(185, 185, 160);
+    margin: 4px 0 22px 0;
+}
+
+.results-stats {
+    margin-bottom: 26px;
+}
+
+.results-row {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 7px 0;
+    border-bottom-width: 1px;
+    border-color: rgb(34, 42, 43);
+}
+
+.root .results-name {
+    font-size: 17px;
+    color: rgb(185, 185, 160);
+}
+
+.root .results-value {
+    font-size: 17px;
+    color: rgb(241, 235, 210);
+    -unity-font-definition: url("project://database/Assets/_Game/Art/Fonts/PT_Sans-Web-Bold.ttf");
+}
+
+.results-buttons {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.root .results-buttons .ghost-button {
+    padding: 0 20px;
+}
+
+/* Art. Icons are 256 px squares from tools/art_gen.py. */
+
+.icon-res_wood { background-image: url("project://database/Assets/_Game/Art/UI/Icons/res_wood.png"); }
+.icon-res_stone { background-image: url("project://database/Assets/_Game/Art/UI/Icons/res_stone.png"); }
+.icon-res_food { background-image: url("project://database/Assets/_Game/Art/UI/Icons/res_food.png"); }
+.icon-unit_swordsman { background-image: url("project://database/Assets/_Game/Art/UI/Icons/unit_swordsman.png"); }
+.icon-unit_worker { background-image: url("project://database/Assets/_Game/Art/UI/Icons/unit_worker.png"); }
+.icon-unit_wagon { background-image: url("project://database/Assets/_Game/Art/UI/Icons/unit_wagon.png"); }
+.icon-unit_wolf { background-image: url("project://database/Assets/_Game/Art/UI/Icons/unit_wolf.png"); }
+.icon-unit_ashen { background-image: url("project://database/Assets/_Game/Art/UI/Icons/unit_ashen.png"); }
+.icon-unit_store { background-image: url("project://database/Assets/_Game/Art/UI/Icons/unit_store.png"); }
+.icon-cmd_build { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_build.png"); }
+.icon-cmd_recruit { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_recruit.png"); }
+.icon-cmd_crew { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_crew.png"); }
+.icon-cmd_raid { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_raid.png"); }
+.icon-cmd_bury { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_bury.png"); }
+.icon-cmd_burn { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_burn.png"); }
+.icon-cmd_hide { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_hide.png"); }
+.icon-cmd_carry { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_carry.png"); }
+.icon-cmd_drop { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_drop.png"); }
+.icon-cmd_escort { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_escort.png"); }
+.icon-cmd_route { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_route.png"); }
+.icon-cmd_halt { background-image: url("project://database/Assets/_Game/Art/UI/Icons/cmd_halt.png"); }
+
+/* Codex */
+
+.codex-list {
+    width: 340px;
+    margin-right: 32px;
+}
+
+.root .codex-item {
+    flex-direction: row;
+    align-items: center;
+    height: 58px;
+    margin: 0 0 6px 0;
+    padding: 0 12px;
+    border-width: 0;
+    border-left-width: 3px;
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(222, 222, 191);
+    font-size: 19px;
+    -unity-text-align: middle-left;
+}
+
+.root .codex-item:hover,
+.root .codex-item:focus {
+    background-color: rgba(191, 158, 92, 0.1);
+}
+
+.root .codex-item--active {
+    background-color: rgba(191, 158, 92, 0.16);
+    border-left-color: rgb(191, 158, 92);
+    color: rgb(241, 235, 210);
+}
+
+.codex-item-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 14px;
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.root .codex-caption {
+    margin: 14px 0 8px 0;
+}
+
+.codex-card {
+    flex-grow: 1;
+    align-self: flex-start;
+    flex-direction: row;
+    padding: 32px;
+    align-items: flex-start;
+}
+
+.codex-art {
+    width: 280px;
+    height: 280px;
+    margin-right: 36px;
+    border-width: 1px;
+    border-color: rgb(191, 158, 92);
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.codex-text {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.root .codex-meta {
+    color: rgb(191, 158, 92);
+    margin-bottom: 4px;
+}
+
+.codex-divider {
+    width: 260px;
+    margin: 4px 0 14px -20px;
+}
+
+/* Main menu on short logical heights (interface scale above 115%) */
+
+.menu--short .title-emblem {
+    display: none;
+}
+
+.menu--short .title {
+    font-size: 64px;
+}
+
+.menu--short .menu-button {
+    height: 40px;
+    font-size: 21px;
+}
+
+.menu--short .page {
+    padding: 36px 80px;
+}
+
+/* Scene fades (UiFx.FadeIn / FadeOut) */
+
+.fader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(4, 6, 7);
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.fader--on {
+    opacity: 1;
+}
+
+/* Staggered entrance (UiFx.Stagger); keeps the quick hover transitions of the menu buttons */
+
+.root .stagger-item {
+    transition-property: opacity, translate, background-color, border-color, color, padding-left;
+    transition-duration: 0.5s, 0.5s, 0.12s, 0.12s, 0.12s, 0.16s;
+    transition-timing-function: ease-out-cubic, ease-out-cubic, ease, ease, ease, ease-out;
+}
+
+/* Continue card on the main menu */
+
+.root .continue-card {
+    position: absolute;
+    right: 48px;
+    bottom: 84px;
+    width: 420px;
+    height: 104px;
+    margin: 0;
+    padding: 10px;
+    flex-direction: row;
+    align-items: center;
+    border-width: 1px;
+    border-color: rgba(191, 158, 92, 0.5);
+    border-radius: 0;
+    background-color: rgba(10, 14, 15, 0.82);
+    transition-duration: 0.15s;
+}
+
+.root .continue-card:hover {
+    border-color: rgb(191, 158, 92);
+    background-color: rgba(26, 32, 30, 0.92);
+    translate: 0 -3px;
+}
+
+.continue-thumb {
+    width: 148px;
+    height: 83px;
+    margin-right: 16px;
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    background-color: rgb(20, 28, 29);
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.continue-info {
+    flex-grow: 1;
+}
+
+.root .continue-info .unity-label {
+    -unity-text-align: upper-left;
+    white-space: normal;
+}
+
+.root .continue-info .caption {
+    margin-bottom: 2px;
+    color: rgb(191, 158, 92);
+}
+
+/* Save slot thumbnails */
+
+.slot-thumb {
+    width: 128px;
+    height: 72px;
+    margin-right: 18px;
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    background-color: rgb(20, 28, 29);
+    -unity-background-scale-mode: scale-and-crop;
 }

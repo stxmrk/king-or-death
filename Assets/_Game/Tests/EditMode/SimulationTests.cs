@@ -105,25 +105,25 @@ namespace KingOrDeath.Tests
         {
             var keep = Store(new Vector3(-30, 0, 20), 30);
             Assert.IsFalse(TerritorySystem.Valid(new Vector3(30, 0, 30), out _, out var r));
-            StringAssert.StartsWith("Outside", r);
+            Assert.AreEqual(Loc.T("pl.outside"), r);
 
             Assert.IsFalse(TerritorySystem.Valid(new Vector3(-30, 0, -1), out _, out r));
-            StringAssert.StartsWith("River", r);
+            Assert.AreEqual(Loc.T("pl.blocked"), r);
 
             var b = new GameObject("House").AddComponent<Building>();
             b.transform.position = new Vector3(-30, 0, 30);
             Assert.IsFalse(TerritorySystem.Valid(new Vector3(-30, 0, 26), out _, out r));
-            StringAssert.StartsWith("River", r);
+            Assert.AreEqual(Loc.T("pl.blocked"), r);
             Object.DestroyImmediate(b.gameObject);
 
             keep.wood = 49;
             Assert.IsFalse(TerritorySystem.Valid(new Vector3(-30, 0, 26), out _, out r));
-            StringAssert.StartsWith("Need", r);
+            StringAssert.StartsWith(Loc.T("pl.cost").Split(new[] { "{0}" }, System.StringSplitOptions.None)[0], r);
 
             keep.wood = 100;
             keep.owner = Faction.Enemy;
             Assert.IsFalse(TerritorySystem.Valid(new Vector3(-30, 0, 26), out _, out r));
-            StringAssert.StartsWith("Outside", r);
+            Assert.AreEqual(Loc.T("pl.outside"), r);
         }
     }
 }

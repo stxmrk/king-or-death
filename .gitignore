@@ -23,3 +23,7 @@ Thumbs.db
 *.zip
 MemoryCaptures/
 Recordings/
+
+# Suno takes kept locally for re-picking (tools/audio_gen.py raw name:take)
+tools/.audio_raw/
+__pycache__/
