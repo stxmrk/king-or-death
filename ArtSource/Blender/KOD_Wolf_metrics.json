@@ -1,0 +1,42 @@
+{
+  "name": "KOD_Wolf",
+  "category": "Wildlife",
+  "lods": [
+    {
+      "triangles": 5666,
+      "vertices": 2871,
+      "uv": true,
+      "materials": 3,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 2832,
+      "vertices": 1454,
+      "uv": true,
+      "materials": 3,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 1132,
+      "vertices": 604,
+      "uv": true,
+      "materials": 3,
+      "degenerate_triangles": 0
+    }
+  ],
+  "rig": true,
+  "animations": [
+    "KOD_Wolf_Attack",
+    "KOD_Wolf_Die",
+    "KOD_Wolf_Idle",
+    "KOD_Wolf_Run",
+    "KOD_Wolf_Stalk",
+    "KOD_Wolf_Walk"
+  ],
+  "scale_m": [
+    0.5400304794311523,
+    2.133500337600708,
+    1.0520908832550049
+  ],
+  "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+}

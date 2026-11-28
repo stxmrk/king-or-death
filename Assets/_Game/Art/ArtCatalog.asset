@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb65ee1bab3d4df43a50598c91ba4bf3, type: 3}
+  m_Name: ArtCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::KingOrDeath.ArtCatalog
+  enemyCloth: {fileID: 2100000, guid: db0e0e91f6bf65e46af09b24a72f3f17, type: 2}
+  house: {fileID: 384578744122578677, guid: 0813fb3616f90f7498da89c18e6161e0, type: 3}
+  swordsman: {fileID: 3496292516461353069, guid: 200dba99f00ebed4fa3b775c01318b32, type: 3}
+  worker: {fileID: 7254206357355058502, guid: c99331f12f892c64b9c190a92d73f51f, type: 3}
+  wolf: {fileID: 8128394267051315974, guid: f6f4437aaaf3a614cbcc6fbaee7d860f, type: 3}
+  outpost: {fileID: 6314274520355134637, guid: fbbf349bcf8751d4a9504505aac25b24, type: 3}
+  wagon: {fileID: 4884669830085301827, guid: 49814a862c3975f4b976bb936a11016f, type: 3}

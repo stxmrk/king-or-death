@@ -10,3 +10,6 @@
 *.png binary
 *.jpg binary
 *.wav binary
+
+*.blend binary
+*.fbx binary

@@ -8,7 +8,7 @@ namespace KingOrDeath {
         public static GameObject Part(string name,PrimitiveType type,Transform parent,Vector3 at,Vector3 scale,Material material){var go=GameObject.CreatePrimitive(type);go.name=name;go.transform.SetParent(parent,false);go.transform.localPosition=at;go.transform.localScale=scale;go.GetComponent<Renderer>().sharedMaterial=material;var c=go.GetComponent<Collider>();if(Application.isPlaying)Object.Destroy(c);else Object.DestroyImmediate(c);return go;}
         public static GameObject Group(string name,Vector3 p){var go=new GameObject(name);go.transform.position=p;return go;}
         public static void BoxHit(GameObject go,Vector3 size,Vector3 center){var c=go.AddComponent<BoxCollider>();c.size=size;c.center=center;}
-        public static GameObject House(string name,Vector3 p){
+        public static GameObject House(string name,Vector3 p){ if(Application.isPlaying && ArtIntegration.I && ArtIntegration.I.catalog.house)return ArtIntegration.I.House(name,p);
             var go=Group(name,p);var t=go.transform;
             Part("Stone foundation",PrimitiveType.Cube,t,new Vector3(0,.3f,0),new Vector3(5,.6f,4),Material(Stone));
             Part("Plaster walls",PrimitiveType.Cube,t,new Vector3(0,1.5f,0),new Vector3(4.6f,2.4f,3.6f),Material(new Color(.71f,.65f,.49f)));

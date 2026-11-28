@@ -1,0 +1,35 @@
+{
+  "name": "KOD_House",
+  "category": "Buildings",
+  "lods": [
+    {
+      "triangles": 4810,
+      "vertices": 2934,
+      "uv": true,
+      "materials": 9,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 2404,
+      "vertices": 1731,
+      "uv": true,
+      "materials": 9,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 962,
+      "vertices": 1010,
+      "uv": true,
+      "materials": 9,
+      "degenerate_triangles": 0
+    }
+  ],
+  "rig": false,
+  "animations": [],
+  "scale_m": [
+    6.539999961853027,
+    6.423362731933594,
+    6.177499294281006
+  ],
+  "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+}

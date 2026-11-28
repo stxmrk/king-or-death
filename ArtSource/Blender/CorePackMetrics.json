@@ -1,0 +1,234 @@
+[
+  {
+    "name": "KOD_House",
+    "category": "Buildings",
+    "lods": [
+      {
+        "triangles": 4810,
+        "vertices": 2934,
+        "uv": true,
+        "materials": 9,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 2404,
+        "vertices": 1731,
+        "uv": true,
+        "materials": 9,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 962,
+        "vertices": 1010,
+        "uv": true,
+        "materials": 9,
+        "degenerate_triangles": 0
+      }
+    ],
+    "rig": false,
+    "animations": [],
+    "scale_m": [
+      6.539999961853027,
+      6.423362731933594,
+      6.177499294281006
+    ],
+    "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+  },
+  {
+    "name": "KOD_Human_Swordsman",
+    "category": "Characters",
+    "lods": [
+      {
+        "triangles": 5518,
+        "vertices": 2919,
+        "uv": true,
+        "materials": 7,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 2758,
+        "vertices": 1539,
+        "uv": true,
+        "materials": 7,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 1102,
+        "vertices": 711,
+        "uv": true,
+        "materials": 7,
+        "degenerate_triangles": 0
+      }
+    ],
+    "rig": true,
+    "animations": [
+      "KOD_Human_Swordsman_Attack_01",
+      "KOD_Human_Swordsman_Attack_02",
+      "KOD_Human_Swordsman_Die",
+      "KOD_Human_Swordsman_Hit",
+      "KOD_Human_Swordsman_Idle",
+      "KOD_Human_Swordsman_Run",
+      "KOD_Human_Swordsman_Walk"
+    ],
+    "scale_m": [
+      1.0988502502441406,
+      0.4350000023841858,
+      1.8719998598098755
+    ],
+    "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+  },
+  {
+    "name": "KOD_Human_Worker",
+    "category": "Characters",
+    "lods": [
+      {
+        "triangles": 4276,
+        "vertices": 2236,
+        "uv": true,
+        "materials": 6,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 2138,
+        "vertices": 1167,
+        "uv": true,
+        "materials": 6,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 854,
+        "vertices": 525,
+        "uv": true,
+        "materials": 6,
+        "degenerate_triangles": 0
+      }
+    ],
+    "rig": true,
+    "animations": [
+      "KOD_Human_Worker_Carry",
+      "KOD_Human_Worker_ChopWood",
+      "KOD_Human_Worker_Die",
+      "KOD_Human_Worker_Idle",
+      "KOD_Human_Worker_PickUp",
+      "KOD_Human_Worker_Walk"
+    ],
+    "scale_m": [
+      1.0988502502441406,
+      0.3999999761581421,
+      1.8549998998641968
+    ],
+    "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+  },
+  {
+    "name": "KOD_Outpost",
+    "category": "Buildings",
+    "lods": [
+      {
+        "triangles": 3516,
+        "vertices": 2240,
+        "uv": true,
+        "materials": 5,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 1758,
+        "vertices": 1361,
+        "uv": true,
+        "materials": 5,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 702,
+        "vertices": 788,
+        "uv": true,
+        "materials": 5,
+        "degenerate_triangles": 0
+      }
+    ],
+    "rig": false,
+    "animations": [],
+    "scale_m": [
+      6.78000020980835,
+      5.899999618530273,
+      9.215264320373535
+    ],
+    "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+  },
+  {
+    "name": "KOD_TradingWagon",
+    "category": "Vehicles",
+    "lods": [
+      {
+        "triangles": 4224,
+        "vertices": 2320,
+        "uv": true,
+        "materials": 5,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 2112,
+        "vertices": 1264,
+        "uv": true,
+        "materials": 5,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 838,
+        "vertices": 627,
+        "uv": true,
+        "materials": 5,
+        "degenerate_triangles": 0
+      }
+    ],
+    "rig": false,
+    "animations": [],
+    "scale_m": [
+      2.6500000953674316,
+      4.870770454406738,
+      1.4300000667572021
+    ],
+    "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+  },
+  {
+    "name": "KOD_Wolf",
+    "category": "Wildlife",
+    "lods": [
+      {
+        "triangles": 5666,
+        "vertices": 2871,
+        "uv": true,
+        "materials": 3,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 2832,
+        "vertices": 1454,
+        "uv": true,
+        "materials": 3,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 1132,
+        "vertices": 604,
+        "uv": true,
+        "materials": 3,
+        "degenerate_triangles": 0
+      }
+    ],
+    "rig": true,
+    "animations": [
+      "KOD_Wolf_Attack",
+      "KOD_Wolf_Die",
+      "KOD_Wolf_Idle",
+      "KOD_Wolf_Run",
+      "KOD_Wolf_Stalk",
+      "KOD_Wolf_Walk"
+    ],
+    "scale_m": [
+      0.5400304794311523,
+      2.133500337600708,
+      1.0520908832550049
+    ],
+    "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+  }
+]

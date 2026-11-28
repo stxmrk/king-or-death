@@ -7,7 +7,7 @@ namespace KingOrDeath {
             var motor=go.AddComponent<UnitMotor>();var cfg=GameSession.I?GameSession.I.config:null;
             motor.speed=kind==UnitKind.Wagon?(cfg?cfg.wagonSpeed:3.4f):kind==UnitKind.Wolf?(cfg?cfg.wolfSpeed:6):kind==UnitKind.Worker?(cfg?cfg.workerSpeed:4):(cfg?cfg.soldierSpeed:5);
             if(kind==UnitKind.Worker)go.AddComponent<WorkerAgent>();else if(kind==UnitKind.Wagon)go.AddComponent<TradeRoute>();else{var c=go.AddComponent<CombatAgent>();if(kind==UnitKind.Wolf){c.damage=11;c.interval=.8f;c.awareness=11;}else go.AddComponent<EscortOrder>();}
-            return u;
+            if(Application.isPlaying && ArtIntegration.I)ArtIntegration.I.Install(u);return u;
         }
         public static void Build(GameConfig config){
             Random.InitState(1739);

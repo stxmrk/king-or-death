@@ -1,0 +1,29 @@
+PASS: Scene contains initial army, workers and wagon
+PASS: Art integration replaces every supported unit visual
+PASS: Wagon has separate wheel with axle pivot
+PASS: Drag rectangle selects all four workers
+PASS: A* crosses river exclusively through bridge
+PASS: Soldiers walk to flag and capture neutral post
+PASS: Capture system references the new separate flag
+PASS: Opposing soldiers freeze contested capture progress
+PASS: Building rejected outside territory
+PASS: Valid placement inside keep territory: Build from Crownwatch
+PASS: Ordinary house does not extend territory
+PASS: Workers harvest and physically deposit at post
+PASS: Harvest does not teleport into main keep
+PASS: Caravan loads, travels and unloads at keep
+PASS: Wagon wheels rotate during physical transport
+PASS: Empty source makes caravan wait without creating cargo
+PASS: Caravan resumes loading when source receives stock
+PASS: Melee damage kills unit and leaves persistent corpse
+PASS: Corpse retains skinned asset in frozen death pose
+PASS: Death pose lies on ground without upright body
+PASS: Aged remains attract existing wolves from den
+PASS: Wolves travel physically away from forest den
+PASS: Worker reaches body and buries it, removing scent
+PASS: Insufficient local stock rejects spending without underflow
+PASS: Enemy physically recaptures a player-owned post
+PASS: Loss of post suspends caravan route
+PASS: Destroyed caravan drops half of its cargo as recoverable resource
+PASS: Fully blocked route returns no path
+PASS: Route recovers after removing blockade

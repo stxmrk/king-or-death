@@ -1,3 +1,17 @@
+# Asset Pack 001 — шесть интегрированных моделей
+
+Ветка `feature/asset-pack-001`: дом, мечник, рабочий, волк, пост и обоз. Сохранены `.blend`, FBX, PBR-текстуры, три LOD, Unity Prefabs и 19 анимационных клипов. Художественный статус комплекта — **Needs Improvement**; качество референсов пока не достигнуто, расширенная библиотека не готова.
+
+![Витрина в работающем Unity](Docs/Screenshots/AssetPack001/Runtime/AllSixAssets_RTS.png)
+
+[Подробный отчёт, ограничения и пути](Docs/AssetValidationReport.md) · [Проверки ассетов](Docs/AssetRuntimeValidation.txt) · [Проверки игровых механик](Docs/ArtIntegrationValidation.txt)
+
+Для осмотра откройте `Assets/_Game/Scenes/AssetShowcase_01.unity`: 1–6 — модель, ПКМ — вращение, колесо — масштаб, кнопки — доступные клипы. Игровая сцена — `Prototype_01.unity`. Windows-сборки находятся в `Builds/AssetShowcase` и `Builds/Windows`. Исходники — `ArtSource/Blender`, воспроизводимые скрипты — `ArtSource/Tools`.
+
+Не запускайте `PrototypeBuilder.BuildDeliverables` для этой ветки: он пересоздаёт базовую сцену. Для полной пересборки ассетов используйте `ArtPackImporter.BuildAll`, для игровой сборки — `ArtPackImporter.BuildGameplay`. Исходный прототип остаётся в `main` и релизе `v0.1.0-prototype`.
+
+---
+
 # KING OR DEATH
 **A World Remembers Every Battle**
 

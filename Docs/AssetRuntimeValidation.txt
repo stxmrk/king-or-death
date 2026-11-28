@@ -1,0 +1,26 @@
+PASS: KOD_House imported/rendered; LOD0 triangles=4810
+PASS: KOD_Human_Swordsman imported/rendered; LOD0 triangles=5518
+PASS: KOD_Human_Swordsman Animator Hit, skeletal deformation=True
+PASS: KOD_Human_Swordsman Animator Idle, skeletal deformation=True
+PASS: KOD_Human_Swordsman Animator Walk, skeletal deformation=True
+PASS: KOD_Human_Swordsman Animator Attack_02, skeletal deformation=True
+PASS: KOD_Human_Swordsman Animator Die, skeletal deformation=True
+PASS: KOD_Human_Swordsman Animator Run, skeletal deformation=True
+PASS: KOD_Human_Swordsman Animator Attack_01, skeletal deformation=True
+PASS: KOD_Human_Worker imported/rendered; LOD0 triangles=4276
+PASS: KOD_Human_Worker Animator Die, skeletal deformation=True
+PASS: KOD_Human_Worker Animator PickUp, skeletal deformation=True
+PASS: KOD_Human_Worker Animator Carry, skeletal deformation=True
+PASS: KOD_Human_Worker Animator Idle, skeletal deformation=True
+PASS: KOD_Human_Worker Animator Walk, skeletal deformation=True
+PASS: KOD_Human_Worker Animator ChopWood, skeletal deformation=True
+PASS: KOD_Outpost imported/rendered; LOD0 triangles=3516
+PASS: KOD_TradingWagon imported/rendered; LOD0 triangles=4224
+PASS: KOD_Wolf imported/rendered; LOD0 triangles=5666
+PASS: KOD_Wolf Animator Stalk, skeletal deformation=True
+PASS: KOD_Wolf Animator Attack, skeletal deformation=True
+PASS: KOD_Wolf Animator Run, skeletal deformation=True
+PASS: KOD_Wolf Animator Idle, skeletal deformation=True
+PASS: KOD_Wolf Animator Walk, skeletal deformation=True
+PASS: KOD_Wolf Animator Die, skeletal deformation=True
+MEASURED: 60 animated swordsmen, 148,9 average FPS over 5,00 seconds. NVIDIA GeForce RTX 2060. 1600x900 explicit camera rendering with one-pixel GPU readback each frame; includes synchronization overhead, excludes gameplay AI. Not Unity Profiler or normal-window FPS.

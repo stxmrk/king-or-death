@@ -37435,6 +37435,7 @@ GameObject:
   - component: {fileID: 544674512}
   - component: {fileID: 544674511}
   - component: {fileID: 544674510}
+  - component: {fileID: 544674520}
   m_Layer: 0
   m_Name: THE FIRST FRONTIER
   m_TagString: Untagged
@@ -37589,6 +37590,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &544674520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544674509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c4e9d7bced78947a384a6ae1604ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KingOrDeath.ArtIntegration
+  catalog: {fileID: 11400000, guid: 4dc35cc31207fb746bddf9201378e69e, type: 2}
 --- !u!1 &545921094
 GameObject:
   m_ObjectHideFlags: 0

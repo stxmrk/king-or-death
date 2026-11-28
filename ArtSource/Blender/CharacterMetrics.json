@@ -1,0 +1,87 @@
+[
+  {
+    "name": "KOD_Human_Swordsman",
+    "category": "Characters",
+    "lods": [
+      {
+        "triangles": 5518,
+        "vertices": 2919,
+        "uv": true,
+        "materials": 7,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 2758,
+        "vertices": 1539,
+        "uv": true,
+        "materials": 7,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 1102,
+        "vertices": 711,
+        "uv": true,
+        "materials": 7,
+        "degenerate_triangles": 0
+      }
+    ],
+    "rig": true,
+    "animations": [
+      "KOD_Human_Swordsman_Attack_01",
+      "KOD_Human_Swordsman_Attack_02",
+      "KOD_Human_Swordsman_Die",
+      "KOD_Human_Swordsman_Hit",
+      "KOD_Human_Swordsman_Idle",
+      "KOD_Human_Swordsman_Run",
+      "KOD_Human_Swordsman_Walk"
+    ],
+    "scale_m": [
+      1.0988502502441406,
+      0.4350000023841858,
+      1.8719998598098755
+    ],
+    "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+  },
+  {
+    "name": "KOD_Human_Worker",
+    "category": "Characters",
+    "lods": [
+      {
+        "triangles": 4276,
+        "vertices": 2236,
+        "uv": true,
+        "materials": 6,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 2138,
+        "vertices": 1167,
+        "uv": true,
+        "materials": 6,
+        "degenerate_triangles": 0
+      },
+      {
+        "triangles": 854,
+        "vertices": 525,
+        "uv": true,
+        "materials": 6,
+        "degenerate_triangles": 0
+      }
+    ],
+    "rig": true,
+    "animations": [
+      "KOD_Human_Worker_Carry",
+      "KOD_Human_Worker_ChopWood",
+      "KOD_Human_Worker_Die",
+      "KOD_Human_Worker_Idle",
+      "KOD_Human_Worker_PickUp",
+      "KOD_Human_Worker_Walk"
+    ],
+    "scale_m": [
+      1.0988502502441406,
+      0.3999999761581421,
+      1.8549998998641968
+    ],
+    "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+  }
+]

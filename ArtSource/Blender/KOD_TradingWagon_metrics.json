@@ -1,0 +1,35 @@
+{
+  "name": "KOD_TradingWagon",
+  "category": "Vehicles",
+  "lods": [
+    {
+      "triangles": 4224,
+      "vertices": 2320,
+      "uv": true,
+      "materials": 5,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 2112,
+      "vertices": 1264,
+      "uv": true,
+      "materials": 5,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 838,
+      "vertices": 627,
+      "uv": true,
+      "materials": 5,
+      "degenerate_triangles": 0
+    }
+  ],
+  "rig": false,
+  "animations": [],
+  "scale_m": [
+    2.6500000953674316,
+    4.870770454406738,
+    1.4300000667572021
+  ],
+  "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+}

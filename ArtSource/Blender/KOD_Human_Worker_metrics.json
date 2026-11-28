@@ -1,0 +1,42 @@
+{
+  "name": "KOD_Human_Worker",
+  "category": "Characters",
+  "lods": [
+    {
+      "triangles": 4276,
+      "vertices": 2236,
+      "uv": true,
+      "materials": 6,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 2138,
+      "vertices": 1167,
+      "uv": true,
+      "materials": 6,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 854,
+      "vertices": 525,
+      "uv": true,
+      "materials": 6,
+      "degenerate_triangles": 0
+    }
+  ],
+  "rig": true,
+  "animations": [
+    "KOD_Human_Worker_Carry",
+    "KOD_Human_Worker_ChopWood",
+    "KOD_Human_Worker_Die",
+    "KOD_Human_Worker_Idle",
+    "KOD_Human_Worker_PickUp",
+    "KOD_Human_Worker_Walk"
+  ],
+  "scale_m": [
+    1.0988502502441406,
+    0.3999999761581421,
+    1.8549998998641968
+  ],
+  "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+}

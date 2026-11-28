@@ -1,0 +1,435 @@
+[
+  {
+    "name": "KOD_House",
+    "fps": 24,
+    "actions": [],
+    "lods": [
+      {
+        "level": 0,
+        "triangles": 4810,
+        "objects": 1,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Glass",
+          "KOD_Gold",
+          "KOD_Oak",
+          "KOD_Plaster",
+          "KOD_Slate",
+          "KOD_Steel",
+          "KOD_Stone"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 2220,
+        "faces": 2590
+      },
+      {
+        "level": 1,
+        "triangles": 2404,
+        "objects": 1,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Glass",
+          "KOD_Gold",
+          "KOD_Oak",
+          "KOD_Plaster",
+          "KOD_Slate",
+          "KOD_Steel",
+          "KOD_Stone"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 1125,
+        "faces": 1279
+      },
+      {
+        "level": 2,
+        "triangles": 962,
+        "objects": 1,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Glass",
+          "KOD_Gold",
+          "KOD_Oak",
+          "KOD_Plaster",
+          "KOD_Slate",
+          "KOD_Steel",
+          "KOD_Stone"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 413,
+        "faces": 549
+      }
+    ],
+    "armatures": []
+  },
+  {
+    "name": "KOD_Human_Swordsman",
+    "fps": 30,
+    "actions": [
+      "KOD_Human_Swordsman_Attack_01",
+      "KOD_Human_Swordsman_Attack_02",
+      "KOD_Human_Swordsman_Die",
+      "KOD_Human_Swordsman_Hit",
+      "KOD_Human_Swordsman_Idle",
+      "KOD_Human_Swordsman_Run",
+      "KOD_Human_Swordsman_Walk"
+    ],
+    "lods": [
+      {
+        "level": 0,
+        "triangles": 5518,
+        "objects": 3,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Gold",
+          "KOD_Leather",
+          "KOD_Linen",
+          "KOD_Skin",
+          "KOD_Steel"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 2288,
+        "faces": 2808
+      },
+      {
+        "level": 1,
+        "triangles": 2758,
+        "objects": 3,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Gold",
+          "KOD_Leather",
+          "KOD_Linen",
+          "KOD_Skin",
+          "KOD_Steel"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 811,
+        "faces": 1781
+      },
+      {
+        "level": 2,
+        "triangles": 1102,
+        "objects": 3,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Gold",
+          "KOD_Leather",
+          "KOD_Linen",
+          "KOD_Skin",
+          "KOD_Steel"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 130,
+        "faces": 901
+      }
+    ],
+    "armatures": [
+      {
+        "name": "KOD_Human_Swordsman_Rig",
+        "bones": 17
+      }
+    ]
+  },
+  {
+    "name": "KOD_Human_Worker",
+    "fps": 30,
+    "actions": [
+      "KOD_Human_Worker_Carry",
+      "KOD_Human_Worker_ChopWood",
+      "KOD_Human_Worker_Die",
+      "KOD_Human_Worker_Idle",
+      "KOD_Human_Worker_PickUp",
+      "KOD_Human_Worker_Walk"
+    ],
+    "lods": [
+      {
+        "level": 0,
+        "triangles": 4276,
+        "objects": 2,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Gold",
+          "KOD_Leather",
+          "KOD_Linen",
+          "KOD_Oak",
+          "KOD_Skin",
+          "KOD_Steel"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 1686,
+        "faces": 2072
+      },
+      {
+        "level": 1,
+        "triangles": 2138,
+        "objects": 2,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Gold",
+          "KOD_Leather",
+          "KOD_Linen",
+          "KOD_Oak",
+          "KOD_Skin",
+          "KOD_Steel"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 570,
+        "faces": 1323
+      },
+      {
+        "level": 2,
+        "triangles": 854,
+        "objects": 2,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Gold",
+          "KOD_Leather",
+          "KOD_Linen",
+          "KOD_Oak",
+          "KOD_Skin",
+          "KOD_Steel"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 104,
+        "faces": 670
+      }
+    ],
+    "armatures": [
+      {
+        "name": "KOD_Human_Worker_Rig",
+        "bones": 17
+      }
+    ]
+  },
+  {
+    "name": "KOD_Outpost",
+    "fps": 30,
+    "actions": [],
+    "lods": [
+      {
+        "level": 0,
+        "triangles": 3516,
+        "objects": 2,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Gold",
+          "KOD_Oak",
+          "KOD_Slate",
+          "KOD_Stone"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 1502,
+        "faces": 1834
+      },
+      {
+        "level": 1,
+        "triangles": 1758,
+        "objects": 2,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Gold",
+          "KOD_Oak",
+          "KOD_Slate",
+          "KOD_Stone"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 694,
+        "faces": 1000
+      },
+      {
+        "level": 2,
+        "triangles": 702,
+        "objects": 2,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Gold",
+          "KOD_Oak",
+          "KOD_Slate",
+          "KOD_Stone"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 220,
+        "faces": 482
+      }
+    ],
+    "armatures": []
+  },
+  {
+    "name": "KOD_TradingWagon",
+    "fps": 30,
+    "actions": [],
+    "lods": [
+      {
+        "level": 0,
+        "triangles": 4224,
+        "objects": 5,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Leather",
+          "KOD_Oak",
+          "KOD_Plaster",
+          "KOD_Steel"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 1752,
+        "faces": 1932
+      },
+      {
+        "level": 1,
+        "triangles": 2112,
+        "objects": 5,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Leather",
+          "KOD_Oak",
+          "KOD_Plaster",
+          "KOD_Steel"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 552,
+        "faces": 1156
+      },
+      {
+        "level": 2,
+        "triangles": 838,
+        "objects": 5,
+        "materials": [
+          "KOD_BlueCloth",
+          "KOD_Dark",
+          "KOD_Leather",
+          "KOD_Oak",
+          "KOD_Plaster",
+          "KOD_Steel"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 139,
+        "faces": 635
+      }
+    ],
+    "armatures": []
+  },
+  {
+    "name": "KOD_Wolf",
+    "fps": 30,
+    "actions": [
+      "KOD_Wolf_Attack",
+      "KOD_Wolf_Die",
+      "KOD_Wolf_Idle",
+      "KOD_Wolf_Run",
+      "KOD_Wolf_Stalk",
+      "KOD_Wolf_Walk"
+    ],
+    "lods": [
+      {
+        "level": 0,
+        "triangles": 5666,
+        "objects": 1,
+        "materials": [
+          "KOD_Dark",
+          "KOD_Fur",
+          "KOD_Gold"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 1330,
+        "faces": 4336
+      },
+      {
+        "level": 1,
+        "triangles": 2832,
+        "objects": 1,
+        "materials": [
+          "KOD_Dark",
+          "KOD_Fur",
+          "KOD_Gold"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 364,
+        "faces": 2468
+      },
+      {
+        "level": 2,
+        "triangles": 1132,
+        "objects": 1,
+        "materials": [
+          "KOD_Dark",
+          "KOD_Fur",
+          "KOD_Gold"
+        ],
+        "uv": true,
+        "uv_outside_01": 0,
+        "degenerate_triangles": 0,
+        "unweighted_vertices": 0,
+        "quad_faces": 62,
+        "faces": 1070
+      }
+    ],
+    "armatures": [
+      {
+        "name": "KOD_Wolf_Rig",
+        "bones": 17
+      }
+    ]
+  }
+]

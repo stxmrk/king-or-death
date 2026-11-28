@@ -1,0 +1,35 @@
+{
+  "name": "KOD_Outpost",
+  "category": "Buildings",
+  "lods": [
+    {
+      "triangles": 3516,
+      "vertices": 2240,
+      "uv": true,
+      "materials": 5,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 1758,
+      "vertices": 1361,
+      "uv": true,
+      "materials": 5,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 702,
+      "vertices": 788,
+      "uv": true,
+      "materials": 5,
+      "degenerate_triangles": 0
+    }
+  ],
+  "rig": false,
+  "animations": [],
+  "scale_m": [
+    6.78000020980835,
+    5.899999618530273,
+    9.215264320373535
+  ],
+  "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+}

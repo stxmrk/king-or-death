@@ -1,0 +1,43 @@
+{
+  "name": "KOD_Human_Swordsman",
+  "category": "Characters",
+  "lods": [
+    {
+      "triangles": 5518,
+      "vertices": 2919,
+      "uv": true,
+      "materials": 7,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 2758,
+      "vertices": 1539,
+      "uv": true,
+      "materials": 7,
+      "degenerate_triangles": 0
+    },
+    {
+      "triangles": 1102,
+      "vertices": 711,
+      "uv": true,
+      "materials": 7,
+      "degenerate_triangles": 0
+    }
+  ],
+  "rig": true,
+  "animations": [
+    "KOD_Human_Swordsman_Attack_01",
+    "KOD_Human_Swordsman_Attack_02",
+    "KOD_Human_Swordsman_Die",
+    "KOD_Human_Swordsman_Hit",
+    "KOD_Human_Swordsman_Idle",
+    "KOD_Human_Swordsman_Run",
+    "KOD_Human_Swordsman_Walk"
+  ],
+  "scale_m": [
+    1.0988502502441406,
+    0.4350000023841858,
+    1.8719998598098755
+  ],
+  "status": "Needs Improvement — imported and runtime verified; see Docs/AssetValidationReport.md"
+}
