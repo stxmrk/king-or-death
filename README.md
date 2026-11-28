@@ -2,6 +2,8 @@
 
 Ветка `feature/asset-pack-001`: дом, мечник, рабочий, волк, пост и обоз. Сохранены `.blend`, FBX, PBR-текстуры, три LOD, Unity Prefabs и 19 анимационных клипов. Художественный статус комплекта — **Needs Improvement**; качество референсов пока не достигнуто, расширенная библиотека не готова.
 
+**Основа ветки:** прототип `36db810`. Новые меню, сохранения и брифинг из `main` (`54e3d3c`) сюда не объединены; совместимость с ними ещё требует отдельной проверки.
+
 ![Витрина в работающем Unity](Docs/Screenshots/AssetPack001/Runtime/AllSixAssets_RTS.png)
 
 [Подробный отчёт, ограничения и пути](Docs/AssetValidationReport.md) · [Проверки ассетов](Docs/AssetRuntimeValidation.txt) · [Проверки игровых механик](Docs/ArtIntegrationValidation.txt)
